@@ -1,0 +1,6 @@
+##### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ######
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/agritec9/AgriTechly/
+    - /bin/cp -r * $DEPLOYPATH

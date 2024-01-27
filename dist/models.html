@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriTechly</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/src/input.css') }}">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script >
+      // print the current directory in the console
+      console.log("current directory: " + window.location.pathname);
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- adding favicon-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+
+  <div class="bg-gradient-to-b from-white to-gray-50 h-screen">
+    <header>
+      <div class="relative bg-white">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
+          <div class="flex justify-start lg:w-0 lg:flex-1">
+            <a href="#">
+              <span class="sr-only">Agritechly</span>
+              <img class="h-8 w-auto sm:h-10" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="">
+            </a>
+          </div>
+          <div class="-mr-2 -my-2 md:hidden">
+            <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+              <span class="sr-only">Open menu</span>
+              <!-- Heroicon name: outline/menu -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          <nav class="hidden md:flex space-x-10">
+  
+            <a href="index" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              Home
+            </a>
+  
+            <a href="models" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              Models
+            </a>
+  
+            <a href="chat" class="text-base font-medium text-gray-500 hover:text-gray-900">
+              Chat
+            </a>
+          </nav>
+        </div>
+  
+        <!--
+          Mobile menu, show/hide based on mobile menu state.
+  
+          Entering: "duration-200 ease-out"
+            From: "opacity-0 scale-95"
+            To: "opacity-100 scale-100"
+          Leaving: "duration-100 ease-in"
+            From: "opacity-100 scale-100"
+            To: "opacity-0 scale-95"
+        -->
+        <div class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+          <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+            <div class="pt-5 pb-6 px-5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <img class="h-8 w-auto" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Workflow">
+                </div>
+                <div class="-mr-2">
+                  <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+                    <span class="sr-only">Close menu</span>
+                    <!-- Heroicon name: outline/x -->
+                    <svg class="h-6 w-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="mt-6">
+                <nav class="grid grid-cols-1 gap-7">
+                  <a href="index" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                      <!-- Heroicon name: outline/inbox -->
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                      </svg>                          
+                    </div>
+                    <div class="ml-4 text-base font-medium text-gray-900">
+                      Home
+                    </div>
+                  </a>
+  
+                  <a href="chat" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                      <!-- Heroicon name: outline/chat-alt-2 -->
+                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                      </svg>
+                    </div>
+                    <div class="ml-4 text-base font-medium text-gray-900">
+                      Live Chat
+                    </div>
+                  </a>
+  
+                  <a href="models" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                      <!-- Heroicon name: outline/question-mark-circle -->
+                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div class="ml-4 text-base font-medium text-gray-900">
+                      Models
+                    </div>
+                  </a>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="max-w-7xl mx-auto pt-10 px-4 sm:px-6 lg:px-8 ">
+      <div class="sm:flex sm:flex-col sm:align-center">
+        <img class="w-1/2 mx-auto my-auto" src="{{ url_for('static', filename='images/405589387_338088125523287_8906114815950837658_n.png') }}" alt="">
+        <p class="mt-5 text-xl text-gray-500 sm:text-center">a simple prototype that can predict diseases of your animals or plants .</p>
+      </div>
+      <div class="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
+          <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                <div class="p-6" id="honeyBee">          
+                      <h2 class="text-xl leading-6 font-medium text-gray-900">Honey Bee</h2>
+                      <img class="rounded-2xl mt-2 w-full h-48 object-cover" src="{{ url_for('static', filename='images/Bee.jpg') }}" alt="">
+                      <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-honeyBee')">Insert image of Bee</a>
+                      <input type="file" id="imageInput-honeyBee" name="bimage" style="display:none;" value="bee" onchange="handleImageUpload(this)">
+                  </div>
+              <div class="pt-6 pb-8 px-6">
+                <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Features</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li class="flex space-x-3">
+                    <!-- Heroicon name: solid/check -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm text-gray-500">Predict health of a Bee from image</span>
+                  </li>
+    
+                  <li class="flex space-x-3">
+                    <!-- Heroicon name: solid/check -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm text-gray-500">high accuarcy.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+          <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                <div class="p-6" id="plant">
+                    <h2 class="text-lg leading-6 font-medium text-gray-900">Plant</h2>
+                    <img class="rounded-2xl mt-2 w-full h-48 object-cover" src="{{ url_for('static', filename='images/plant.jpg') }}" alt="">
+                    <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-plant')">Insert image of Plant</a>
+                    <input type="file" id="imageInput-plant" name="pimage" style="display:none;" value="plant" onchange="handleImageUpload(this)">
+                  </div>
+              <div class="pt-6 pb-8 px-6">
+                <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Features</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li class="flex space-x-3">
+                    <!-- Heroicon name: solid/check -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm text-gray-500">Predict plants diseases from images </span>
+                  </li>
+    
+                  <li class="flex space-x-3">
+                    <!-- Heroicon name: solid/check -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm text-gray-500">high accuarcy.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+          <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+              <div class="p-6" id="weed">          
+                <h2 class="text-xl leading-6 font-medium text-gray-900">Weed Detector</h2>
+                <img class="rounded-2xl mt-2 w-full h-48 object-cover" src="{{ url_for('static', filename='images/Drone.jpg') }}" alt="">
+                <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Insert image of Field</a>
+                <input type="file" id="imageInput-Weed" name="wimage" style="display:none;" value="weed" onchange="handleImageUpload(this)">
+              </div>
+              <div class="pt-6 pb-8 px-6">
+                <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Weed Detector</h3>
+                <ul role="list" class="mt-6 space-y-4">
+                  <li class="flex space-x-3">
+                    <!-- Heroicon name: solid/check -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm text-gray-500">Detect weeds and Field type.</span>
+                  </li>
+    
+                  <li class="flex space-x-3">
+                    <!-- Heroicon name: solid/check -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-sm text-gray-500">High Accuaracy.</span>
+                  </li>
+                </ul>
+              </div> 
+            </div>
+          </form>
+        </div>
+        </div>
+    </div>
+    <div id="custom-modal" class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                  <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">{{disease}}</h3>
+                  <div class="mt-2">
+                    <p id="cure" class="text-sm text-gray-500">{{cure}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <button type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto" onclick="closeCustomModal()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add this inside the body tag, before your other elements -->
+    <div id="loading" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center">
+      <div class="absolute inset-0 bg-gray-500 bg-opacity-75"></div>
+      <div class="relative p-8 bg-white rounded-lg shadow-lg">
+        <div class="flex justify-center mb-4">
+          <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-green-700"></div>
+        </div>
+        <p class="text-center text-gray-800">Loading...</p>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
