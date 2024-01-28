@@ -10,4 +10,3 @@ numpy==1.26.2
 opencv-python==4.8.1.78
 packaging==23.2
 Werkzeug==3.0.1
-encodings
