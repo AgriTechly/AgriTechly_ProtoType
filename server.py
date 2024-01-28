@@ -8,6 +8,14 @@ import subprocess
 import json
 import os
 import sys
+import locale
+
+# Set the locale
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
+# Set environment variables
+os.environ['LC_ALL'] = 'en_US.UTF-8'
+os.environ['LANG'] = 'en_US.UTF-8'
 
 sys.path.append('/venv/Lib/site-packages')
 
