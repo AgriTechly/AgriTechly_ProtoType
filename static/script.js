@@ -84,3 +84,22 @@ function handleImageUpload(input) {
   }
 }
 
+// Select the button to close the navbar
+const closeButton = document.querySelector(".absolute .bg-white button");
+
+// Select the navbar itself
+const navbar = document.querySelector(".absolute");
+
+// Add a click event listener to the close button
+closeButton.addEventListener("click", () => {
+  if (!navbar.classList.contains("hidden")) {
+    navbar.classList.toggle("hidden");
+  }
+});
+
+// Add an event listener on the document (or a parent container)
+document.addEventListener("click", (event) => {
+  if (navbar.classList.contains("hidden") && !navbar.contains(event.target)) {
+    navbar.classList.remove("hidden");
+  }
+});
