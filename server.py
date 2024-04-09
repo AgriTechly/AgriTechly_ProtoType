@@ -35,7 +35,7 @@ def index2():
 @app.route('/chat')
 def chat():
     # print current directory
-    return redirect("https://chat.agritechly.tech")
+    return redirect("http://127.0.0.1:3000")
 @app.route('/models')
 def models():
     # print current directory
@@ -110,4 +110,4 @@ def upload():
         return jsonify({'success': False, 'message': str(e), 'trace': 'exception'})
     
 if __name__ == '__main__':
-    app.run(debug=False,port=5500)
+    app.run(debug=True,port=5500)

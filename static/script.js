@@ -53,25 +53,27 @@ function handleImageUpload(input) {
           if (data.result.class.includes("healthy")) {
             const customModal = document.getElementById("custom-modal");
             customModal.querySelector("#modal-title").innerText = data.result.class;
+            customModal.querySelector("#cure").innerHTML = "Great, <br> <br> <br> but it's better to check a <strong>specialist</strong>.";
+;
             openCustomModal();
           }else{
 
             const customModal = document.getElementById("custom-modal");
             customModal.querySelector("#modal-title").innerText = data.result.class;
-            customModal.querySelector("#cure").innerText = data.result.cure;
+            customModal.querySelector("#cure").innerHTML = data.result.cure+"<br> <br> <br> but it's <strong> better to check a specialist</strong>.";
             openCustomModal();
           }
         }
         else if(input.id === "imageInput-honeyBee"){
           const customModal = document.getElementById("custom-modal");
           customModal.querySelector("#modal-title").innerText = data.result.class;
-          customModal.querySelector("#cure").innerText = data.result.probability+" %";
+          customModal.querySelector("#cure").innerHTML = data.result.probability+" % <br> <br> <br> but it's <strong> better to check a specialist</strong>.";
           openCustomModal();
         }
         else if(input.id === "imageInput-Weed"){
           const customModal = document.getElementById("custom-modal");
           customModal.querySelector("#modal-title").innerText = data.result.class;
-          customModal.querySelector("#cure").innerText = data.result.probability+" %";
+          customModal.querySelector("#cure").innerHTML = data.result.probability+" % <br> <br> <br> but it's <strong> better to check a specialist</strong>.";
           openCustomModal();
         }
       })

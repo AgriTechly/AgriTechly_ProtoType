@@ -11,6 +11,7 @@ import json
 import cv2
 import tensorflow as tf
 import numpy as np
+from keras.models import load_model
 
 # loading and preprocessing the image
 def load_and_preprocess_image(image_path):
@@ -100,7 +101,10 @@ def main():
         sys.exit(1)
  
     image_path = sys.argv[1]
-    model = tf.keras.models.load_model(model_path)
+    print("Image path:", image_path)
+    print("Model path:", model_path)
+    model = load_model(model_path)
+    print("Model loaded successfully")
 
     # Process input data (e.g., image) and make predictions
     result = model.predict(np.array(load_and_preprocess_image(image_path)))
@@ -115,14 +119,14 @@ def main():
         # create the result dict
         result_dict = {
             "class": predicted_class_name,
-            "probability": str(np.max(result[0], axis=-1))
+            "probability": str(np.max(result[0], axis=-1) * 100)
         }
     else:
         # load the cure.json file
         with open(os.path.join(script_dir, 'cure.json'), encoding="utf8") as json_file:
             cure_dict = json.load(json_file)
         # get the cure for the disease
-        cure = cure_dict[predicted_class_name.lower()]
+        cure = cure_dict.get(predicted_class_name.lower(), "No prevention information available.")
         # create the result dict
         result_dict = {
             "class": predicted_class_name,
