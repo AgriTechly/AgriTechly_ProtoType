@@ -17,7 +17,7 @@
               <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="index">
                   <span class="sr-only">Agritechly</span>
-                  <img class="h-8 w-auto sm:h-10" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="">
+                  <img class="h-8 w-auto sm:h-10 lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="">
                 </a>
               </div>
               <div class="-mr-2 -my-2 md:hidden">
@@ -60,7 +60,7 @@
                 <div class="pt-5 pb-6 px-5">
                   <div class="flex items-center justify-between">
                     <div>
-                      <img class="h-8 w-auto" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Workflow">
+                      <img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Workflow">
                     </div>
                     <div class="-mr-2">
                       <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
@@ -125,7 +125,7 @@
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
                   <div class="absolute inset-0">
-                    <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/harvesting.jpg') }}" alt="People working on laptops">
+                    <img class="h-full w-full object-cover lazyload" src="{{ url_for('static', filename='images/harvesting.jpg') }}" alt="People working on laptops">
                     <div class="absolute inset-0  mix-blend-multiply"></div>
                   </div>
                   <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
@@ -277,7 +277,7 @@
                 <ul role="list" class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
                   <li>
                     <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="">
                       <div class="space-y-2">
                         <div class="text-lg leading-6 font-medium space-y-1">
                           <h3>MEKKAOUI Ahmed</h3>
@@ -340,7 +340,7 @@
                   </li>
                   <li>
                     <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/said.jpg') }}" alt="">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/said.jpg') }}" alt="">
                       <div class="space-y-2">
                         <div class="text-lg leading-6 font-medium space-y-1">
                           <h3>BENMOHAMED Mohamed Said</h3>
@@ -401,5 +401,6 @@ document.addEventListener("click", (event) => {
   }
 });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha384-jCkHY6ZWzIMI7i6lwnbWsfPGGwSkb3XeC/x5akq9ZMWfzCePUePLy4DxPh5l0QDf" crossorigin="anonymous"></script>
 </body>
 </html>
