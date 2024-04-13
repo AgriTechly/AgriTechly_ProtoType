@@ -17,7 +17,7 @@
               <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="index">
                   <span class="sr-only">Agritechly</span>
-                  <img class="h-8 w-auto sm:h-10 lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Image" style="filter: blur(10px);">
+                  <img class="h-8 w-auto sm:h-10 lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Image">
                 </a>
               </div>
               <div class="-mr-2 -my-2 md:hidden">
@@ -60,7 +60,7 @@
                 <div class="pt-5 pb-6 px-5">
                   <div class="flex items-center justify-between">
                     <div>
-                      <img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Workflow" style="filter: blur(10px);">
+                      <img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Workflow">
                     </div>
                     <div class="-mr-2">
                       <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
@@ -125,7 +125,7 @@
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
                   <div class="absolute inset-0">
-                    <img class="h-full w-full object-cover lazyload" src="{{ url_for('static', filename='images/harvesting.jpg') }}" alt="People working on laptops" style="filter: blur(10px);">
+                    <img class="h-full w-full object-cover lazyload" src="{{ url_for('static', filename='images/harvesting.jpg') }}" alt="People working on laptops">
                     <div class="absolute inset-0  mix-blend-multiply"></div>
                   </div>
                   <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
@@ -277,7 +277,7 @@
                 <ul role="list" class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
                   <li>
                     <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="Image" style="filter: blur(10px);">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="Image">
                       <div class="space-y-2">
                         <div class="text-lg leading-6 font-medium space-y-1">
                           <h3>MEKKAOUI Ahmed</h3>
@@ -298,7 +298,7 @@
                   </li>
                   <li>
                     <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/Rahmani.jpeg') }}" alt="Image" style="filter: blur(10px);">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/Rahmani.jpeg') }}" alt="Image">
                       <div class="space-y-2">
                         <div class="text-lg leading-6 font-medium space-y-1">
                           <h3>RAHMANI AbdElKader Seif El Islem</h3>
@@ -319,7 +319,7 @@
                   </li>
                   <li>
                     <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/abdenour.png') }}" alt="Image" style="filter: blur(10px);">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/abdenour.png') }}" alt="Image">
                       <div class="space-y-2">
                         <div class="text-lg leading-6 font-medium space-y-1">
                           <h3>AIT AHMED Abdenour</h3>
@@ -340,7 +340,7 @@
                   </li>
                   <li>
                     <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/said.jpg') }}" alt="Image" style="filter: blur(10px);">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/said.jpg') }}" alt="Image">
                       <div class="space-y-2">
                         <div class="text-lg leading-6 font-medium space-y-1">
                           <h3>BENMOHAMED Mohamed Said</h3>
@@ -401,51 +401,26 @@ document.addEventListener("click", (event) => {
   }
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha384-jCkHY6ZWzIMI7i6lwnbWsfPGGwSkb3XeC/x5akq9ZMWfzCePUePLy4DxPh5l0QDf" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
+    var lazyImages = document.querySelectorAll("img.lazyload");
 
-    if ("IntersectionObserver" in window) {
-        var lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    var lazyImage = entry.target;
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.removeAttribute("data-src");
-                    lazyImage.style.filter = 'none';
-                    lazyImageObserver.unobserve(lazyImage);
-                }
-            });
-        });
-
-        lazyImages.forEach(function(lazyImage) {
-            lazyImageObserver.observe(lazyImage);
-        });
-    } else {
-        // Fallback for browsers that do not support IntersectionObserver
-        var lazyLoad = function() {
-            lazyImages.forEach(function(lazyImage) {
-                if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.removeAttribute("data-src");
-                    lazyImage.style.filter = 'none';
-                }
-            });
-            lazyImages = lazyImages.filter(function(image) {
-                return image.dataset.src;
-            });
-            if (lazyImages.length === 0) {
-                document.removeEventListener("scroll", lazyLoad);
-                window.removeEventListener("resize", lazyLoad);
-                window.removeEventListener("orientationchange", lazyLoad);
+    function loadImages() {
+        lazyImages.forEach(function(img) {
+            if (img.dataset.src && img.getBoundingClientRect().top < window.innerHeight + 100) {
+                img.src = img.dataset.src;
+                img.removeAttribute("data-src");
+                img.classList.remove("lazyload");
             }
-        };
-
-        document.addEventListener("scroll", lazyLoad);
-        window.addEventListener("resize", lazyLoad);
-        window.addEventListener("orientationchange", lazyLoad);
+        });
     }
+
+    // Load images on page load
+    loadImages();
+
+    // Load remaining images after a short delay
+    setTimeout(loadImages, 200); // Adjust delay as needed
 });
 </script>
 
