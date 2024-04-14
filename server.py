@@ -35,7 +35,7 @@ def index2():
 @app.route('/chat')
 def chat():
     # print current directory
-    return redirect("http://127.0.0.1:3000")
+    return redirect("http://chat.agritechly.tech")
 @app.route('/models')
 def models():
     # print current directory
