@@ -10,5 +10,7 @@ numpy
 opencv-python
 packaging
 Werkzeug
-tensorflow
+tensorflow==2.12.0
 pandas
+scikit-learn==1.2.2
+joblib

@@ -3,12 +3,24 @@ this file is the server of the project
 """
 
 # import the necessary packages
-from flask import Flask, request, jsonify, render_template, redirect
-import subprocess
-import json
+from flask import Flask, render_template, redirect
 import os
 import sys
 import locale
+import tensorflow as tf
+
+# import DL classifiers
+from scripts.plant import plant_disease
+from scripts.weed import weed_detect
+from scripts.flood import flood_pred
+"""
+from scripts.lemon import lemon_detect
+#from scripts.pest import pest
+#from scripts.chicken import chicken
+from scripts.cropP import cropP
+from scripts.cropR import cropR
+from scripts.irrigation import irrigation
+"""
 
 # Set the locale
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
@@ -20,6 +32,17 @@ os.environ['LANG'] = 'en_US.UTF-8'
 sys.path.append('/venv/Lib/site-packages')
 
 app = Flask(__name__, template_folder='dist', static_folder='static')
+app.register_blueprint(plant_disease)
+app.register_blueprint(weed_detect)
+app.register_blueprint(flood_pred)
+"""
+app.register_blueprint(lemon_detect)
+#app.register_blueprint(pest)
+#app.register_blueprint(chicken)
+app.register_blueprint(cropP)
+app.register_blueprint(cropR)
+app.register_blueprint(irrigation)
+"""
 
 # setup wsgi object
 wsgi_app = app.wsgi_app
@@ -40,74 +63,46 @@ def chat():
 def models():
     # print current directory
     return render_template('models.html')
-@app.route('/upload', methods=['POST'])
-def upload():
-    try:
-        if 'pimage' in request.files:
-            uploaded_file = request.files['pimage']
-            print(uploaded_file)
-            if uploaded_file:
-                # Save the uploaded file
-                uploaded_file.save('uploaded_image.jpg')
+@app.route('/models/plantDisease')
+def plantDisease():
+    # print current directory
+    return render_template('models/plant.html')    
+@app.route('/models/weedDetector')
+def weedDetector():
+    # print current directory
+    return render_template('models/weed.html')
+"""
+@app.route('/models/lemonChecker')
+def lemonChecker():
+    # print current directory
+    return render_template('models/lemon.html')
+@app.route('/models/pestDetect')
+def pestDetection():
+    # print current directory
+    return render_template('models/pest.html')
+@app.route('/models/chickenFecal')
+def chickenFecal():
+    # print current directory
+    return render_template('models/chicken.html')
+@app.route('/models/cropPred')
+def cropPred():
+    # print current directory
+    return render_template('models/cropP.html')
+@app.route('/models/cropRec')
+def cropRec():
+    # print current directory
+    return render_template('models/cropR.html')
 
-                current_dir = os.getcwd()
-                # change \ to / in current dir
-                current_dir = current_dir.replace("\\", "/")
-                # Run plant prediction script
-                subprocess.run(['python', current_dir+'/scripts/predict_plant.py', 'uploaded_image.jpg'])
+@app.route('/models/irrigation')
+def irrigation():
+    # print current directory
+    return render_template('models/irrigation.html')
 
-                # Read the result from the JSON file
-                with open(current_dir+'/scripts/results/result_plants.json') as json_file:
-                    result_dict = json.load(json_file)
+"""
+@app.route('/models/floodPred')
+def floodPred():
+    # print current directory
+    return render_template('models/flood.html')
 
-                # Return the result as JSON
-                return jsonify({'success': True, 'message': 'File uploaded and processed successfully', 'result': result_dict})
-            else:
-                return jsonify({'success': False, 'message': 'No file uploaded'})
-        if 'bimage' in request.files:
-            uploaded_file = request.files['bimage']
-            print(uploaded_file)
-            if uploaded_file:
-                # Save the uploaded file
-                uploaded_file.save('uploaded_image.jpg')
-
-                current_dir = os.getcwd()
-                # change \ to / in current dir
-                current_dir = current_dir.replace("\\", "/")
-                # Run plant prediction script
-                subprocess.run(['python', current_dir+'/scripts/predict_bee.py', 'uploaded_image.jpg'])
-
-                # Read the result from the JSON file
-                with open(current_dir+'/scripts/results/result_bee.json') as json_file:
-                    result_dict = json.load(json_file)
-
-                # Return the result as JSON
-                return jsonify({'success': True, 'message': 'File uploaded and processed successfully', 'result': result_dict})
-            else:
-                return jsonify({'success': False, 'message': 'No file uploaded'})
-        if 'wimage' in request.files:
-            uploaded_file = request.files['wimage']
-            print(uploaded_file)
-            if uploaded_file:
-                # Save the uploaded file
-                uploaded_file.save('uploaded_image.jpg')
-
-                current_dir = os.getcwd()
-                # change \ to / in current dir
-                current_dir = current_dir.replace("\\", "/")
-                # Run plant prediction script
-                subprocess.run(['python', current_dir+'/scripts/predict_weed.py', 'uploaded_image.jpg'])
-
-                # Read the result from the JSON file
-                with open(current_dir+'/scripts/results/result_weed.json') as json_file:
-                    result_dict = json.load(json_file)
-
-                # Return the result as JSON
-                return jsonify({'success': True, 'message': 'File uploaded and processed successfully', 'result': result_dict})
-            else:
-                return jsonify({'success': False, 'message': 'No file uploaded'})
-    except Exception as e:
-        return jsonify({'success': False, 'message': str(e), 'trace': 'exception'})
-    
 if __name__ == '__main__':
     app.run(debug=True,port=5500)
