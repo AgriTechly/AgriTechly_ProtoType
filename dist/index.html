@@ -88,7 +88,7 @@
           const weather = data.list[i];
           const city = data.city.name + data.city.country;
           const date = new Date(weather.dt * 1000);
-          const Day = ['الأجد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const Day = [' الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
           const hours = date.getHours();
           const isDay = hours >= 6 && hours < 18;
           let icon = '';
@@ -522,7 +522,7 @@
           <div class="news-bar">
             <div class="news-items" id="weather-container"></div>
           </div>
-          
+
           <!-- team section-->
           <div class="bg-white">
             <div class="max-w-7xl mx-auto py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
