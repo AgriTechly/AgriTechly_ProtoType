@@ -13,14 +13,15 @@ import tensorflow as tf
 from scripts.plant import plant_disease
 from scripts.weed import weed_detect
 from scripts.flood import flood_pred
-"""
 from scripts.lemon import lemon_detect
-#from scripts.pest import pest
-#from scripts.chicken import chicken
+from scripts.irrigation import irrigation
 from scripts.cropP import cropP
 from scripts.cropR import cropR
-from scripts.irrigation import irrigation
 """
+#from scripts.pest import pest
+#from scripts.chicken import chicken
+"""
+
 
 # Set the locale
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
@@ -32,16 +33,17 @@ os.environ['LANG'] = 'en_US.UTF-8'
 sys.path.append('/venv/Lib/site-packages')
 
 app = Flask(__name__, template_folder='dist', static_folder='static')
+app.register_blueprint(news)
 app.register_blueprint(plant_disease)
 app.register_blueprint(weed_detect)
 app.register_blueprint(flood_pred)
-"""
 app.register_blueprint(lemon_detect)
-#app.register_blueprint(pest)
-#app.register_blueprint(chicken)
+app.register_blueprint(irrigation)
 app.register_blueprint(cropP)
 app.register_blueprint(cropR)
-app.register_blueprint(irrigation)
+"""
+#app.register_blueprint(pest)
+#app.register_blueprint(chicken)
 """
 
 # setup wsgi object
@@ -71,11 +73,15 @@ def plantDisease():
 def weedDetector():
     # print current directory
     return render_template('models/weed.html')
-"""
 @app.route('/models/lemonChecker')
 def lemonChecker():
     # print current directory
     return render_template('models/lemon.html')
+@app.route('/models/irrigation')
+def irrigation():
+    # print current directory
+    return render_template('models/irrigation.html')
+"""
 @app.route('/models/pestDetect')
 def pestDetection():
     # print current directory
@@ -84,21 +90,15 @@ def pestDetection():
 def chickenFecal():
     # print current directory
     return render_template('models/chicken.html')
-@app.route('/models/cropPred')
+@app.route('/models/cropP')
 def cropPred():
     # print current directory
     return render_template('models/cropP.html')
-@app.route('/models/cropRec')
+"""
+@app.route('/models/cropR')
 def cropRec():
     # print current directory
     return render_template('models/cropR.html')
-
-@app.route('/models/irrigation')
-def irrigation():
-    # print current directory
-    return render_template('models/irrigation.html')
-
-"""
 @app.route('/models/floodPred')
 def floodPred():
     # print current directory
