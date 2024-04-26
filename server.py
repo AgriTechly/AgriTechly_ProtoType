@@ -22,6 +22,12 @@ from scripts.cropR import cropR
 #from scripts.chicken import chicken
 """
 
+# add news script
+import scripts.news
+from scripts.news import news
+
+# add articles script
+from scripts.articles import articles
 
 # Set the locale
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
@@ -41,6 +47,7 @@ app.register_blueprint(lemon_detect)
 app.register_blueprint(irrigation)
 app.register_blueprint(cropP)
 app.register_blueprint(cropR)
+app.register_blueprint(articles)
 """
 #app.register_blueprint(pest)
 #app.register_blueprint(chicken)
@@ -49,6 +56,8 @@ app.register_blueprint(cropR)
 # setup wsgi object
 wsgi_app = app.wsgi_app
 
+news_data = scripts.news.get_news()
+
 @app.route('/')
 def index():
     # print current directory
@@ -56,7 +65,11 @@ def index():
 @app.route('/index')
 def index2():
     # print current directory
-    return render_template('index.html')
+    return render_template('index.html',news=news_data)
+@app.route('/blog')
+def blog():
+    # print current directory
+    return render_template('blog.html',news=news_data)
 @app.route('/chat')
 def chat():
     # print current directory
@@ -64,7 +77,7 @@ def chat():
 @app.route('/models')
 def models():
     # print current directory
-    return render_template('models.html')
+    return render_template('models.html',news=news_data)
 @app.route('/models/plantDisease')
 def plantDisease():
     # print current directory
