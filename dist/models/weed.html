@@ -39,6 +39,211 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- adding favicon-->
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <style>
+      .news-bar {
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+      }
+  
+      .news-bar .news-items {
+        display: inline-block;
+        padding-left: 100%;
+        animation: marquee 60s linear infinite;
+      }
+  
+      .news-bar .news-items span {
+        display: inline-block;
+        padding: 10px;
+      }
+  
+      @keyframes marquee {
+        0% { transform: translateX(-10%); }
+        100% { transform: translateX(-100%); }
+      }
+      .news-bar .news-items-rtl {
+        display: inline-block;
+        padding-left: 100%;
+        animation: marquee-rtl 60s linear infinite;
+      }
+  
+      
+      @keyframes marquee-rtl {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(0%); }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+    <script>
+      const apiKey = 'YOUR_API_KEY';
+
+      // Function to fetch weather data from the API
+      async function fetchWeatherData(latitude, longitude) {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}&lang=ar`);
+        const data = await response.json();
+        return data;
+      }
+
+      // Function to display weather data
+      function displayWeatherData(data) {
+        const weatherContainer = document.getElementById('weather-container');
+        weatherContainer.innerHTML = '';
+
+        let weatherHTML = '';
+        for (let i = 0; i < data.list.length; i++) {
+          const weather = data.list[i];
+          const city = data.city.name + data.city.country;
+          const date = new Date(weather.dt * 1000);
+          const Day = ['الأجد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const hours = date.getHours();
+          const isDay = hours >= 6 && hours < 18;
+          let icon = '';
+          // check if date changes
+          if (i === 0 || date.getDate() !== new Date(data.list[i - 1].dt * 1000).getDate()) {
+            // check if the icon value equals to 01d
+            if (data.list[i].weather[0].icon.includes('01d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/01d.png') }}" alt="clear sky">`;
+            }else if (data.list[i].weather[0].icon.includes('01n')){
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/01n.png') }}" alt="clear sky">`;
+            }else if (data.list[i].weather[0].icon.includes('02d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/02d.png') }}" alt="few clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('02n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/02n.png') }}" alt="few clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('03d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/03d.png') }}" alt="scattered clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('03n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/03n.png') }}" alt="scattered clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('04d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/04d.png') }}" alt="broken clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('04n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/04n.png') }}" alt="broken clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('09d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/09d.png') }}" alt="shower rain">`;
+            } else if (data.list[i].weather[0].icon.includes('09n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/09n.png') }}" alt="shower rain">`;
+            } else if (data.list[i].weather[0].icon.includes('10d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/10d.png') }}" alt="rain">`;
+            } else if (data.list[i].weather[0].icon.includes('10n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/10n.png') }}" alt="rain">`;
+            } else if (data.list[i].weather[0].icon.includes('11d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/11d.png') }}" alt="thunderstorm">`;
+            } else if (data.list[i].weather[0].icon.includes('11n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/11n.png') }}" alt="thunderstorm">`;
+            } else if (data.list[i].weather[0].icon.includes('13d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/13d.png') }}" alt="snow">`;
+            } else if (data.list[i].weather[0].icon.includes('13n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/13n.png') }}" alt="snow">`;
+            } else if (data.list[i].weather[0].icon.includes('50d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/50d.png') }}" alt="mist">`;
+            } else if (data.list[i].weather[0].icon.includes('50n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/50n.png') }}" alt="mist">`;
+            }
+            
+            weatherHTML += `
+              <span class="text-xs mx-4">
+                <div class="flex flex-col">
+                    <div>
+                        <h2 class="font-bold text-gray-600 text-center">${city}</h2>
+                        <p class="font-bold text-gray-600 text-center">${hours}:00 ${Day}</p>
+                    </div>
+                    <div class="my-6">
+                        <div class="flex flex-row items-center">
+                            <div id="icon">
+                              ${icon}
+                            </div>
+                            <div id="temp">
+                                <h4 class="text-sm">${Math.round(weather.main.temp)}°C</h4>
+                                <p class="text-xs text-gray-500">${weather.weather[0].description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </span>
+            `;
+          }else{
+            if (data.list[i].weather[0].icon.includes('01d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/01d.png') }}" alt="clear sky">`;
+            }else if (data.list[i].weather[0].icon.includes('01n')){
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/01n.png') }}" alt="clear sky">`;
+            }else if (data.list[i].weather[0].icon.includes('02d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/02d.png') }}" alt="few clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('02n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/02n.png') }}" alt="few clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('03d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/03d.png') }}" alt="scattered clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('03n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/03n.png') }}" alt="scattered clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('04d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/04d.png') }}" alt="broken clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('04n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/04n.png') }}" alt="broken clouds">`;
+            } else if (data.list[i].weather[0].icon.includes('09d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/09d.png') }}" alt="shower rain">`;
+            } else if (data.list[i].weather[0].icon.includes('09n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/09n.png') }}" alt="shower rain">`;
+            } else if (data.list[i].weather[0].icon.includes('10d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/10d.png') }}" alt="rain">`;
+            } else if (data.list[i].weather[0].icon.includes('10n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/10n.png') }}" alt="rain">`;
+            } else if (data.list[i].weather[0].icon.includes('11d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/11d.png') }}" alt="thunderstorm">`;
+            } else if (data.list[i].weather[0].icon.includes('11n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/11n.png') }}" alt="thunderstorm">`;
+            } else if (data.list[i].weather[0].icon.includes('13d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/13d.png') }}" alt="snow">`;
+            } else if (data.list[i].weather[0].icon.includes('13n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/13n.png') }}" alt="snow">`;
+            } else if (data.list[i].weather[0].icon.includes('50d')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/50d.png') }}" alt="mist">`;
+            } else if (data.list[i].weather[0].icon.includes('50n')) {
+              icon = `<img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/weather/50n.png') }}" alt="mist">`;
+            }
+            weatherHTML += `
+            <span class="text-xs mx-4">
+              <div class="flex flex-col">
+                    <div>
+                        <h2 class="font-bold text-gray-600 text-center">${city}</h2>
+                        <p class="font-bold text-gray-600 text-center">${hours}:00</p>
+                    </div>
+                    <div class="my-6">
+                        <div class="flex flex-row items-center">
+                            <div id="icon">
+                              ${icon}
+                            </div>
+                            <div id="temp">
+                                <h4 class="text-sm">${Math.round(weather.main.temp)}°C</h4>
+                                <p class="text-xs text-gray-500">${weather.weather[0].description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+          `;
+          }
+            
+        }
+        weatherContainer.innerHTML = weatherHTML;
+      }
+
+      // Check if the Geolocation API is supported
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            fetchWeatherData(latitude, longitude)
+              .then(data => displayWeatherData(data))
+              .catch(error => console.error(error));
+          },
+          (error) => {
+            console.error('Error getting location:', error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    </script>
 </head>
 <body>
 
