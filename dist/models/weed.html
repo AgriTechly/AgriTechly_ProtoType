@@ -151,13 +151,6 @@
         </div>
       </div>
     </header>
-    <div class="news-bar">
-      <div div class="news-items-rtl" id="news-container">
-        {% for article in news %}
-        <span class="text-xs mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
-        {% endfor %}
-      </div>
-    </div>
     <div class="relative bg-white py-16 sm:py-24">
       <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
         <div class="relative sm:py-16 lg:py-0">
@@ -215,9 +208,6 @@
         </div>
         {% endif %}
       </div>
-    </div>
-    <div class="news-bar">
-      <div class="news-items" id="weather-container"></div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
