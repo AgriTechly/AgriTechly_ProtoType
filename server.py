@@ -79,6 +79,11 @@ def blog2():
 def chat():
     # print current directory
     return redirect("http://chat.agritechly.tech")
+# redirect models/chat to chat
+@app.route('/models/chat')
+def chat2():
+    # print current directory
+    return redirect("http://chat.agritechly.tech")
 @app.route('/models')
 def models():
     # print current directory
