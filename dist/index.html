@@ -67,9 +67,8 @@
         100% { transform: translateX(0%); }
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <script>
-      const apiKey = 'YOUR_API_KEY';
+      const apiKey = 'dfa609f3274391103c598f7c74ecb199';
 
       // Function to fetch weather data from the API
       async function fetchWeatherData(latitude, longitude) {
@@ -88,7 +87,7 @@
           const weather = data.list[i];
           const city = data.city.name + data.city.country;
           const date = new Date(weather.dt * 1000);
-          const Day = [' الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const Day = ['الأجد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
           const hours = date.getHours();
           const isDay = hours >= 6 && hours < 18;
           let icon = '';
@@ -268,7 +267,7 @@
               <a href="blog" class="text-base font-medium text-gray-500 hover:text-gray-900">
                   Blog
               </a>
-  
+
               <a href="models" class="text-base font-medium text-gray-500 hover:text-gray-900">
                 Models
               </a>
@@ -331,7 +330,7 @@
                         Blog
                       </div>
                     </a>
-  
+
                     <a href="models" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                       <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
                         <!-- Heroicon name: outline/question-mark-circle -->
@@ -361,7 +360,6 @@
           </div>
         </div>
       </header>
-      
       <div class="news-bar">
         <div class="news-items-rtl" id="news-container">
           {% for article in news %}
@@ -369,6 +367,7 @@
           {% endfor %}
         </div>
       </div>
+      
         <main>
           <div>
             <!-- Hero card -->
@@ -518,11 +517,11 @@
               </dl>
             </div>
           </div>
-
+        
           <div class="news-bar">
             <div class="news-items" id="weather-container"></div>
           </div>
-
+          
           <!-- team section-->
           <div class="bg-white">
             <div class="max-w-7xl mx-auto py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
@@ -536,13 +535,13 @@
                     <div class="space-y-6">
                       <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="Image">
                       <div class="space-y-2">
-                        <div class="text-lg leading-6 font-medium space-y-1">
+                        <div class="text-lg leading-6 font-medium">
                           <h3>MEKKAOUI Ahmed</h3>
                           <p class="text-green-600">Front-end Developer</p>
                         </div>
                         <ul role="list" class="flex justify-center space-x-5">
                           <li>
-                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <a href="https://www.linkedin.com/in/ahmed-mekkaoui-3091391aa/" target="_blank" class="text-gray-400 hover:text-gray-500">
                               <span class="sr-only">LinkedIn</span>
                               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -557,13 +556,13 @@
                     <div class="space-y-6">
                       <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/Rahmani.jpeg') }}" alt="Image">
                       <div class="space-y-2">
-                        <div class="text-lg leading-6 font-medium space-y-1">
-                          <h3>RAHMANI AbdElKader Seif El Islem</h3>
+                        <div class="text-lg leading-6 font-medium">
+                          <h3 class="inline">RAHMANI AbdElKader Seif El Islem</h3>
                           <p class="text-green-600">Machine Learning Developer</p>
                         </div>
                         <ul role="list" class="flex justify-center space-x-5">
                           <li>
-                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <a href="https://www.linkedin.com/in/abd-el-kader-seif-el-islem-rahmani-2805b019b/" target="_blank" class="text-gray-400 hover:text-gray-500">
                               <span class="sr-only">LinkedIn</span>
                               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -584,7 +583,7 @@
                         </div>
                         <ul role="list" class="flex justify-center space-x-5">
                           <li>
-                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <a href="https://www.linkedin.com/in/abdenour-ait-ahmed-b8bb051a6/" target="_blank" class="text-gray-400 hover:text-gray-500">
                               <span class="sr-only">LinkedIn</span>
                               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -605,7 +604,7 @@
                         </div>
                         <ul role="list" class="flex justify-center space-x-5">
                           <li>
-                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <a href="https://www.linkedin.com/in/mohamed-said-benmohamed-0a9a44217/" target="_blank" class="text-gray-400 hover:text-gray-500">
                               <span class="sr-only">LinkedIn</span>
                               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
