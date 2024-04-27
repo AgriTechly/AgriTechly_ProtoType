@@ -70,6 +70,11 @@ def index2():
 def blog():
     # print current directory
     return render_template('blog.html',news=news_data)
+# redirect models/blog to blog
+@app.route('/models/blog')
+def blog2():
+    # print current directory
+    return redirect("/blog")
 @app.route('/chat')
 def chat():
     # print current directory
