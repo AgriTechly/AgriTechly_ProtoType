@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request
-from keras.models import load_model
-from keras.utils import load_img, img_to_array
+#from keras.models import load_model
+#from keras.utils import load_img, img_to_array
+# import random just for prototype
+import random
 import cv2
 import numpy as np
 import os
@@ -71,11 +73,11 @@ dic = {
 }
 
 news = get_news()
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(script_dir, 'models', 'PlantDisease.h5')
+#script_dir = os.path.dirname(os.path.abspath(__file__))
+#model_path = os.path.join(script_dir, 'models', 'PlantDisease.h5')
     
-model = load_model(model_path)
-model.make_predict_function()
+#model = load_model(model_path)
+#model.make_predict_function()
 def load_and_preprocess_image(image_path):
     img = cv2.imread(image_path)
     img = cv2.resize(img, (224, 224))
@@ -84,9 +86,12 @@ def load_and_preprocess_image(image_path):
     return img
 
 def predict_label(img_path):
+    """
     result = model.predict(np.array(load_and_preprocess_image(img_path)))
     predicted_class = np.argmax(result[0], axis=-1)
     predicted_class_name = dic[predicted_class]
+    """
+    predicted_class_name = random.choice(list(dic.values()))
     return predicted_class_name
 
 
