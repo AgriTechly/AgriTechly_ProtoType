@@ -17,10 +17,9 @@ from scripts.lemon import lemon_detect
 from scripts.irrigation import irrigation
 from scripts.cropP import cropP
 from scripts.cropR import cropR
-"""
-#from scripts.pest import pest
-#from scripts.chicken import chicken
-"""
+from scripts.pest import pest
+from scripts.chicken import chicken
+from scripts.bees import bee
 
 # add news script
 import scripts.news
@@ -47,11 +46,11 @@ app.register_blueprint(lemon_detect)
 app.register_blueprint(irrigation)
 app.register_blueprint(cropP)
 app.register_blueprint(cropR)
+app.register_blueprint(bee)
 app.register_blueprint(articles)
-"""
-#app.register_blueprint(pest)
-#app.register_blueprint(chicken)
-"""
+app.register_blueprint(pest)
+app.register_blueprint(chicken)
+
 
 # setup wsgi object
 wsgi_app = app.wsgi_app
@@ -104,7 +103,6 @@ def lemonChecker():
 def irrigation():
     # print current directory
     return render_template('models/irrigation.html')
-"""
 @app.route('/models/pestDetect')
 def pestDetection():
     # print current directory
@@ -117,7 +115,6 @@ def chickenFecal():
 def cropPred():
     # print current directory
     return render_template('models/cropP.html')
-"""
 @app.route('/models/cropR')
 def cropRec():
     # print current directory
@@ -126,6 +123,10 @@ def cropRec():
 def floodPred():
     # print current directory
     return render_template('models/flood.html')
+@app.route('/models/Bee')
+def bee():
+    # print current directory
+    return render_template('models/bee.html')
 
 if __name__ == '__main__':
     app.run(debug=True,port=5500)
