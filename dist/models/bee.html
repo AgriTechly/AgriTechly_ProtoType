@@ -251,7 +251,7 @@
 </head>
 <body>
 
-  <div class="bg-white h-screen">
+  <div class="bg-gradient-to-b from-white to-gray-50 h-screen">
     <header>
       <div class="relative bg-white">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
@@ -373,338 +373,68 @@
       </div>
     </header>
     <div class="news-bar">
-      <div class="news-items-rtl" id="news-container">
+      <div div class="news-items-rtl" id="news-container">
         {% for article in news %}
         <span class="text-xs mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
         {% endfor %}
       </div>
     </div>
-    <div class="max-w-7xl mx-auto pt-10 px-4 sm:px-6 lg:px-8 ">
-      <div class="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-              <div class="p-6" id="honeyBee">          
-                  <h2 class="text-xl leading-6 font-medium text-gray-900">Honey Bee</h2>
-                  <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/Bee.jpg') }}" alt="Image">
-                  <a href="/models/Bee" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-honeyBee')">Explore Model</a>
+    <div class="relative bg-white py-16 sm:py-24">
+      <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+        <div class="relative sm:py-16 lg:py-0">
+          <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+            <div class="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"></div>
+            <svg class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404" height="392" fill="none" viewBox="0 0 404 392">
+              <defs>
+                <pattern id="02f20b47-fd69-4224-a62a-4c9de5c763f7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
+            </svg>
+          </div>
+          <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+            <!-- Testimonial card-->
+            <div class="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
+              <img class="absolute inset-0 h-full w-full object-cover" src="{{ url_for('static', filename='images/Bee.jpg') }}" alt="">
+              <div class="absolute inset-0  mix-blend-multiply"></div>
+              
+              <div class="relative px-8">
+                <div>
+                  <h2 class="text-xl font-semibold text-indigo-200">Honey Bee</h2>
                 </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Features</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Predict the Type of bee base on sounds</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">high accuarcy.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-              <div class="p-6" id="plant">
-                <h2 class="text-lg leading-6 font-medium text-gray-900">Plant Disease Detector</h2>
-                <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/plant.jpg') }}" alt="Image">
-                <a href="/models/plantDisease" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-plant')">Explore Model</a>
+                <blockquote class="mt-8">
+                  <footer class="mt-4">
+                    <form class="form-horizontal" action="/bee/submit" method="post" enctype="multipart/form-data">
+                      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+                      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-slate-200 dark:border-gray-500 dark:placeholder-gray-400" name="my_image" id="file_input" type="file">
+                      <button type="submit" class="inline-flex w-full justify-center rounded-md bg-green-600 mt-2 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">submit</button>
+                    </form>
+                  </footer>
+                </blockquote>
               </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Features</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Predict plants diseases from images </span>
-                </li>
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">high accuarcy.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="weed">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Weed Detector</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/Drone.jpg') }}" alt="Image">
-              <a href="/models/weedDetector" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Weed Detector</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Detect weeds and Field type.</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">High Accuaracy.</span>
-                </li>
-              </ul>
-            </div> 
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="lemon">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Lemon Quality Checker</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/Lemons.jpg') }}" alt="Image">
-              <a href="/models/lemonChecker" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Lemon Quality Checker</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Automated Grading System.</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Real-time Inspection.</span>
-                </li>
-              </ul>
-            </div> 
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="pest">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Pest Detector</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/pest.jpg') }}" alt="Image">
-              <a href="/models/pestDetect" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Pest Detector</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Pest Identification.</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Data-driven Decision Support.</span>
-                </li>
-              </ul>
-            </div> 
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="chicken">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Chicken Health Checker</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/chicken.jpg') }}" alt="Image">
-              <a href="/models/chickenFecal" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Chicken Health Checker</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Early Disease Detection.</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Non-invasive Health Monitoring.</span>
-                </li>
-              </ul>
-            </div> 
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cow">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Lumpy Cow Detector</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/cow.jpg') }}" alt="Image">
-              <a href="/models/lumpyCow" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Lumpy Cow Detector</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Image Recognition for Bovine Health.</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Early Detection and Prevention.</span>
-                </li>
-              </ul>
-            </div> 
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropR">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Crop Yield Recommendation</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/cropR.jpg') }}" alt="Image">
-              <a href="/models/cropR" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Crop Yield Recommendation</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Personalized Recommendations for Precision Agriculture.</span>
-                </li>
-  
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Data-Driven Yield Prediction.</span>
-                </li>
-              </ul>
-            </div> 
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Crop Yield Prediction</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/cropP.jpg') }}" alt="Image">
-              <a href="/models/cropP" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Crop Yield Prediction</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Decision Support for Farm Management.</span>
-                </li>
-
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Data-driven Yield Forecasting.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Flood Prediction</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/flood.jpg') }}" alt="Image">
-              <a href="/models/flood" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Flood Prediction</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Early Warning.</span>
-                </li>
-
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Helpful for Risk Assessment.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Irrigation Optimization</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/irrigation.jpg') }}" alt="Image">
-              <a href="/models/irrigation" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Irrigation Optimization</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Efficient Water Management.</span>
-                </li>
-
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Customized Recommendations.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Wate Quality Checker</h2>
-              <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/water.jpg') }}" alt="Image">
-              <a href="/models/water" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
-            </div>
-            <div class="pt-6 pb-8 px-6">
-              <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Wate Quality Checker</h3>
-              <ul role="list" class="mt-6 space-y-4">
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Comprehensive Water Assessment.</span>
-                </li>
-
-                <li class="flex space-x-3">
-                  <!-- Heroicon name: solid/check -->
-                  <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-500">Health Care & Crop care.</span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
+        {% if prediction %}
+        <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+          <!-- Content area -->
+          <div class="pt-12 sm:pt-16 lg:pt-20">
+            <h2 class="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+              {{ prediction }}
+            </h2>
+            <div class="mt-6 text-gray-500 space-y-6">
+              <p class="text-lg">
+                <!--check if cure is not empty-->
+                {% if cure %}
+                <b>Cure:</b> {{ cure }}
+                {% endif %}
+              <p class="text-base leading-7">
+                  But it's always better to check <strong>specialist</strong>.</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
       </div>
       <br><br>
       <div class="news-bar">

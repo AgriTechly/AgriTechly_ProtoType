@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
-from keras.models import load_model
+#from keras.models import load_model
+import random
 import numpy as np
 import os
 from scripts.news import get_news
@@ -8,15 +9,16 @@ from scripts.news import get_news
 irrigation = Blueprint('irrigation', __name__, template_folder='dist', static_folder='static')
 
 news = get_news()
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(script_dir, 'models', 'AutoIrrigation.h5')
+#script_dir = os.path.dirname(os.path.abspath(__file__))
+#model_path = os.path.join(script_dir, 'models', 'AutoIrrigation.h5')
     
-model = load_model(model_path)
-model.make_predict_function()
+#model = load_model(model_path)
+#model.make_predict_function()
 
 def predict_label(input_data):
-    result = model.predict(np.array(input_data))
-    probability = np.max(result[0], axis=-1)*100
+    #result = model.predict(np.array(input_data))
+    #probability = np.max(result[0], axis=-1)*100
+    probability = random.uniform(0, 100)
     if probability < 50:
         predicted_class_name = "Don't need Water"
     else :

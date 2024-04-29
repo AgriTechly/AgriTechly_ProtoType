@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
-from keras.models import load_model
-from keras.utils import load_img, img_to_array
+#from keras.models import load_model
+#from keras.utils import load_img, img_to_array
+import random
 import cv2
 import numpy as np
 import os
@@ -13,8 +14,8 @@ news = get_news()
 script_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(script_dir, 'models', 'lemonsQuality.h5')
     
-model = load_model(model_path)
-model.make_predict_function()
+#model = load_model(model_path)
+#model.make_predict_function()
 def load_and_preprocess_image(image_path):
     img = cv2.imread(image_path)
     img = cv2.resize(img, (300, 300))
@@ -23,10 +24,11 @@ def load_and_preprocess_image(image_path):
     return img
 
 def predict_label(img_path):
-    result = model.predict(np.array(load_and_preprocess_image(img_path)))
-    predicted_class = np.argmax(result[0], axis=-1)
+    #result = model.predict(np.array(load_and_preprocess_image(img_path)))
+    #predicted_class = np.argmax(result[0], axis=-1)
     # check if prediction is less than 50% probability
-    probability = np.max(result[0], axis=-1)*100
+    #probability = np.max(result[0], axis=-1)*100
+    probability = random.uniform(0, 100)
     if probability < 50:
         predicted_class_name = "Bad Quality Lemon"
     else :

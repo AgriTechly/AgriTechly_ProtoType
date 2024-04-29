@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
-import joblib
-from joblib import load, dump
+#import joblib
+#from joblib import load, dump
+import random
 import numpy as np
 import os
 from scripts.news import get_news
@@ -9,10 +10,10 @@ from scripts.news import get_news
 cropR = Blueprint('crop_rec', __name__, template_folder='dist', static_folder='static')
 
 news = get_news()
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(script_dir, 'models', 'CropRec.joblib')
+#script_dir = os.path.dirname(os.path.abspath(__file__))
+#model_path = os.path.join(script_dir, 'models', 'CropRec.joblib')
     
-model = load(model_path)
+#model = load(model_path)
 dict = {
     0 : 'rice',
     1 : 'maize',
@@ -38,9 +39,10 @@ dict = {
     21: 'coffee'
 }
 def predict_label(input_data):
-    result = model.predict(np.array(input_data))
+    #result = model.predict(np.array(input_data))
     # get the predicted class name
-    predicted_class_name = dict[result[0]]
+    #predicted_class_name = dict[result[0]]
+    predicted_class_name = random.choice(list(dict.values()))
     return predicted_class_name
 
 # routes

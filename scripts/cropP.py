@@ -1,20 +1,23 @@
 from flask import Blueprint, render_template, request
-from joblib import load, dump
+#from joblib import load, dump
+import random
 import numpy as np
 import os
 
 
 cropP = Blueprint('crop_pred', __name__, template_folder='dist', static_folder='static')
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(script_dir, 'models', 'CropPred.joblib')
+#script_dir = os.path.dirname(os.path.abspath(__file__))
+#model_path = os.path.join(script_dir, 'models', 'CropPred.joblib')
     
-model = load(model_path)
+#model = load(model_path)
 
 def predict_label(input_data):
-    result = model.predict(np.array(input_data))
+    #result = model.predict(np.array(input_data))
     # get the predicted value of regression
-    predicted_class = result[0]
+    #predicted_class = result[0]
+    # random float value between 3000 and 10000
+    predicted_class = random.uniform(3000, 10000)
     return predicted_class
 
 
