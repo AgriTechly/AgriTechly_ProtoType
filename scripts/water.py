@@ -37,8 +37,16 @@ def kuch_bhi():
 def get_hours():
     if request.method == 'POST':
 		# get the data from inputs
-        input_data = request.form['inputs']
-        input_data = input_data.split(',')
+        input_data = []
+        input_data.append(request.form['ph'])
+        input_data.append(request.form['h'])
+        input_data.append(request.form['s'])
+        input_data.append(request.form['c'])
+        input_data.append(request.form['su'])
+        input_data.append(request.form['cd'])
+        input_data.append(request.form['oc'])
+        input_data.append(request.form['thm'])
+        input_data.append(request.form['trb'])
         input_data = [float(i) for i in input_data]
         input_data = np.array([input_data])
         p = predict_label(input_data)
