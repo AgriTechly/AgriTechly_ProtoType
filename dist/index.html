@@ -523,102 +523,93 @@
           </div>
           
           <!-- team section-->
-          <div class="bg-white">
-            <div class="max-w-7xl mx-auto py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
-              <div class="space-y-12">
-                <div class="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-                  <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Meet our team</h2>
-                  <p class="text-xl text-gray-500">At Agritechly, we're more than just a team – we're a passionate community of innovators dedicated to revolutionizing sustainable agriculture with AI technology.</p>
+          <section class="relative py-20 md:py-24 bg-gray-100 overflow-hidden">
+            <div class="relative container px-4 mx-auto">
+              <div class="max-w-md md:max-w-2xl mx-auto xl:max-w-7xl">
+                <div class="flex flex-wrap mb-20 -mx-4 items-center">
+                  <div class="w-full xl:w-1/2 px-4">
+                    <div>
+                      <h1 class="font-heading text-5xl xs:text-6xl md:text-7xl font-bold text-gray-900 mb-8">
+                        <span>Get to know our amazing</span>
+                        <span class="font-serif italic">Team</span>
+                      </h1>
+                    </div>
+                  </div>
+                  <div class="w-full xl:w-1/2 px-4">
+                    <div class="max-w-lg xl:ml-auto">
+                      <p class="text-lg text-gray-500">At Agritechly, we're more than just a team – we're a passionate community of innovators dedicated to revolutionizing sustainable agriculture with AI technology.</p>
+                    </div>
+                  </div>
                 </div>
-                <ul role="list" class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
-                  <li>
-                    <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="Image">
-                      <div class="space-y-2">
-                        <div class="text-lg leading-6 font-medium">
-                          <h3>MEKKAOUI Ahmed</h3>
-                          <p class="text-green-600">Front-end Developer</p>
+                <div class="flex flex-wrap -mx-4 -mb-12">
+                  <div class="w-full md:w-1/2 xl:w-1/4 px-4 mb-12">
+                    <div class="max-w-xs md:max-w-none mx-auto">
+                      <div class="flex flex-col items-center">
+                        <img class="block h-48 w-48 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/mekkaoui.png') }}" alt="">
+                        <div class="inline-flex -mt-6 mb-5 items-center justify-center py-3 px-5 bg-white rounded-full">
+                          <a class="inline-block mr-3 p-1 hover:bg-green-100 rounded-md" href="https://www.linkedin.com/in/ahmed-mekkaoui-3091391aa/" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                            </svg>
+                          </a>
                         </div>
-                        <ul role="list" class="flex justify-center space-x-5">
-                          <li>
-                            <a href="https://www.linkedin.com/in/ahmed-mekkaoui-3091391aa/" target="_blank" class="text-gray-400 hover:text-gray-500">
-                              <span class="sr-only">LinkedIn</span>
-                              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                              </svg>
-                            </a>
-                          </li>
-                        </ul>
+                        <h5 class="text-base font-bold">Ahmed Mekkaoui</h5>
+                        <span class="text-sm font-medium text-green-600">Front-End Developer</span>
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/Rahmani.jpeg') }}" alt="Image">
-                      <div class="space-y-2">
-                        <div class="text-lg leading-6 font-medium">
-                          <h3 class="inline">RAHMANI AbdElKader Seif El Islem</h3>
-                          <p class="text-green-600">Machine Learning Developer</p>
+                  </div>
+                  <div class="w-full md:w-1/2 xl:w-1/4 px-4 mb-12">
+                    <div class="max-w-xs md:max-w-none mx-auto">
+                      <div class="flex flex-col items-center">
+                        <img class="block h-48 w-48 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/abdenour.jpg') }}" alt="">
+                        <div class="inline-flex -mt-6 mb-5 items-center justify-center py-3 px-5 bg-white rounded-full">
+                          <a class="inline-block mr-3 p-1 hover:bg-green-100 rounded-md" href="https://www.linkedin.com/in/abdenour-ait-ahmed-b8bb051a6/" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                            </svg>
+                          </a>
                         </div>
-                        <ul role="list" class="flex justify-center space-x-5">
-                          <li>
-                            <a href="https://www.linkedin.com/in/abd-el-kader-seif-el-islem-rahmani-2805b019b/" target="_blank" class="text-gray-400 hover:text-gray-500">
-                              <span class="sr-only">LinkedIn</span>
-                              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                              </svg>
-                            </a>
-                          </li>
-                        </ul>
+                        <h5 class="text-base font-bold">Abdenour AIT AHMED</h5>
+                        <span class="text-sm font-medium text-green-600">Marketer & Tester</span>
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" src="{{ url_for('static', filename='images/team/abdenour.jpg') }}" alt="Image">
-                      <div class="space-y-2">
-                        <div class="text-lg leading-6 font-medium space-y-1">
-                          <h3>AIT AHMED Abdenour</h3>
-                          <p class="text-green-600">Marketer & Tester</p>
+                  </div>
+                  <div class="w-full md:w-1/2 xl:w-1/4 px-4 mb-12">
+                    <div class="max-w-xs md:max-w-none mx-auto">
+                      <div class="flex flex-col items-center">
+                        <img class="block h-48 w-48 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/said.jpg') }}" alt="">
+                        <div class="inline-flex -mt-6 mb-5 items-center justify-center py-3 px-5 bg-white rounded-full">
+                          <a class="inline-block mr-3 p-1 hover:bg-green-100 rounded-md" href="https://www.linkedin.com/in/mohamed-said-benmohamed-0a9a44217/" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                            </svg>
+                          </a>
                         </div>
-                        <ul role="list" class="flex justify-center space-x-5">
-                          <li>
-                            <a href="https://www.linkedin.com/in/abdenour-ait-ahmed-b8bb051a6/" target="_blank" class="text-gray-400 hover:text-gray-500">
-                              <span class="sr-only">LinkedIn</span>
-                              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                              </svg>
-                            </a>
-                          </li>
-                        </ul>
+                        <h5 class="text-base font-bold">Mohamed Said BENMOHAMED</h5>
+                        <span class="text-sm font-medium text-green-600">Designer & Speaker</span>
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <div class="space-y-6">
-                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/said.jpg') }}" alt="Image">
-                      <div class="space-y-2">
-                        <div class="text-lg leading-6 font-medium space-y-1">
-                          <h3>BENMOHAMED Mohamed Said</h3>
-                          <p class="text-green-600">Designer & Speaker</p>
+                  </div>
+                  <div class="w-full md:w-1/2 xl:w-1/4 px-4 mb-12">
+                    <div class="max-w-xs md:max-w-none mx-auto">
+                      <div class="flex flex-col items-center">
+                        <img class="block h-48 w-48 rounded-full xl:w-56 xl:h-56 lazyload" src="{{ url_for('static', filename='images/team/Rahmani.jpeg') }}" alt="">
+                        <div class="inline-flex -mt-6 mb-5 items-center justify-center py-3 px-5 bg-white rounded-full">
+                          <a class="inline-block mr-3 p-1 hover:bg-green-100 rounded-md" href="https://www.linkedin.com/in/abd-el-kader-seif-el-islem-rahmani-2805b019b/" target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                            </svg>
+                          </a>
                         </div>
-                        <ul role="list" class="flex justify-center space-x-5">
-                          <li>
-                            <a href="https://www.linkedin.com/in/mohamed-said-benmohamed-0a9a44217/" target="_blank" class="text-gray-400 hover:text-gray-500">
-                              <span class="sr-only">LinkedIn</span>
-                              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                              </svg>
-                            </a>
-                          </li>
-                        </ul>
+                        <h5 class="text-base font-bold">AbdElKader Seif El Islem RAHMANI</h5>
+                        <span class="text-sm font-medium text-green-600">Machine Learning Developer</span>
                       </div>
                     </div>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
           <footer class="bg-white">
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
               <div class="flex justify-center space-x-6 md:order-2">
