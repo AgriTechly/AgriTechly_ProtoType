@@ -21,6 +21,7 @@ from scripts.pest import pest
 from scripts.chicken import chicken
 from scripts.bees import bee
 from scripts.water import water
+from scripts.cow import cow
 
 # add news script
 import scripts.news
@@ -52,6 +53,7 @@ app.register_blueprint(articles)
 app.register_blueprint(pest)
 app.register_blueprint(chicken)
 app.register_blueprint(water)
+app.register_blueprint(cow)
 
 
 # setup wsgi object
@@ -137,6 +139,10 @@ def bee():
 def water():
     # print current directory
     return render_template('models/water.html')
+@app.route('/models/cow')
+def cow():
+    # print current directory
+    return render_template('models/cow.html')
 
 
 if __name__ == '__main__':
