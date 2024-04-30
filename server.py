@@ -7,7 +7,7 @@ from flask import Flask, render_template, redirect
 import os
 import sys
 import locale
-import tensorflow as tf
+#import tensorflow as tf
 
 # import DL classifiers
 from scripts.plant import plant_disease
@@ -89,6 +89,10 @@ def chat2():
 def models():
     # print current directory
     return render_template('models.html',news=news_data)
+@app.route('/models/models')
+def models2():
+    # print current directory
+    return redirect("/models")
 @app.route('/models/plantDisease')
 def plantDisease():
     # print current directory
