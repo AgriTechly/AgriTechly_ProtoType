@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 #from keras.models import load_model
 #from keras.utils import load_img, img_to_array
 import random
@@ -15,8 +15,8 @@ dic = {
     2: 'New Castle Disease',
     3: 'Salmonella',
 }
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(script_dir, 'models', 'ChickenFecal.h5')
+#script_dir = os.path.dirname(os.path.abspath(__file__))
+#model_path = os.path.join(script_dir, 'models', 'ChickenFecal.h5')
     
 #model = load_model(model_path)
 #model.make_predict_function()
@@ -71,3 +71,13 @@ def get_hours():
         return render_template("models/chicken.html", prediction = p, img_path = img_path)
 
     return render_template("models/chicken.html")
+
+@chicken.route("/chicken/models")
+def chicken_model():
+    return redirect("/models")
+@chicken.route("/chicken/blog")
+def chicken_blog():
+    return redirect("/blog")
+@chicken.route("/chicken/chat")
+def chicken_chat():
+    return redirect("/chat")
