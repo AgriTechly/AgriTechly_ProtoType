@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 #from keras.models import load_model
 #from keras.utils import load_img, img_to_array
 import random
@@ -7,7 +7,7 @@ import numpy as np
 import os
 
 
-chicken = Blueprint('cow', __name__, template_folder='dist', static_folder='static')
+cow = Blueprint('cow', __name__, template_folder='dist', static_folder='static')
 
 dic = {
     0: 'Healthy',
@@ -35,11 +35,11 @@ def predict_label(img_path):
     return predicted_class_name
 
 # routes
-@chicken.route("/models/lumpyCow", methods=['GET', 'POST'])
+@cow.route("/models/lumpyCow", methods=['GET', 'POST'])
 def kuch_bhi():
     return render_template("/models/cow.html")
 
-@chicken.route("/cow/submit", methods = ['GET', 'POST'])
+@cow.route("/cow/submit", methods = ['GET', 'POST'])
 def get_hours():
     if request.method == 'POST':
 		# empty the static folder
@@ -69,3 +69,13 @@ def get_hours():
         return render_template("models/cow.html", prediction = p, img_path = img_path)
 
     return render_template("models/cow.html")
+
+@cow.route("/cow/models")
+def chicken_model():
+    return redirect("/models")
+@cow.route("/cow/blog")
+def chicken_blog():
+    return redirect("/blog")
+@cow.route("/cow/chat")
+def chicken_chat():
+    return redirect("/chat")
