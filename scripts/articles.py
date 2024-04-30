@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template , redirect
 import requests
 from bs4 import BeautifulSoup
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -75,3 +75,13 @@ articles = Blueprint('articles', __name__, template_folder='dist', static_folder
 def index():
     #research_data = scrape_website('https://example.com/research')
     return render_template('blog.html', news=news, research=latest_articles)
+
+@articles.route("/blog/models")
+def chicken_model():
+    return redirect("/models")
+@articles.route("/blog/blog")
+def chicken_blog():
+    return redirect("/blog")
+@articles.route("/blog/chat")
+def chicken_chat():
+    return redirect("/chat")
