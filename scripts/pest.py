@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 #from keras.models import load_model
 #from keras.utils import load_img, img_to_array
 import random
@@ -77,3 +77,13 @@ def get_hours():
         return render_template("models/pest.html", prediction = p, img_path = img_path)
 
     return render_template("models/pest.html")
+
+@pest.route("/pest/models")
+def chicken_model():
+    return redirect("/models")
+@pest.route("/pest/blog")
+def chicken_blog():
+    return redirect("/blog")
+@pest.route("/pest/chat")
+def chicken_chat():
+    return redirect("/chat")
