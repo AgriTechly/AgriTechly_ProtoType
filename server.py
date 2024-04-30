@@ -20,6 +20,7 @@ from scripts.cropR import cropR
 from scripts.pest import pest
 from scripts.chicken import chicken
 from scripts.bees import bee
+from scripts.water import water
 
 # add news script
 import scripts.news
@@ -50,6 +51,7 @@ app.register_blueprint(bee)
 app.register_blueprint(articles)
 app.register_blueprint(pest)
 app.register_blueprint(chicken)
+app.register_blueprint(water)
 
 
 # setup wsgi object
@@ -127,6 +129,11 @@ def floodPred():
 def bee():
     # print current directory
     return render_template('models/bee.html')
+@app.route('/models/water')
+def water():
+    # print current directory
+    return render_template('models/water.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True,port=5500)
