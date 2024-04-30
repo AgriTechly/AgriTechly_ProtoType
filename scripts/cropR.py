@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 #import joblib
 #from joblib import load, dump
 import random
@@ -69,3 +69,13 @@ def get_hours():
         return render_template("models/cropR.html", prediction = p, news=news)
 
     return render_template("models/cropR.html", news=news)
+
+@cropR.route("/cropR/models")
+def chicken_model():
+    return redirect("/models")
+@cropR.route("/cropR/blog")
+def chicken_blog():
+    return redirect("/blog")
+@cropR.route("/cropR/chat")
+def chicken_chat():
+    return redirect("/chat")
