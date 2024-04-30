@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 #from keras.models import load_model
 import random
 import numpy as np
@@ -54,3 +54,13 @@ def get_hours():
         return render_template("models/water.html", prediction = p, news=news)
 
     return render_template("models/water.html", news=news)
+
+@water.route("/water/models")
+def chicken_model():
+    return redirect("/models")
+@water.route("/water/blog")
+def chicken_blog():
+    return redirect("/blog")
+@water.route("/water/chat")
+def chicken_chat():
+    return redirect("/chat")
