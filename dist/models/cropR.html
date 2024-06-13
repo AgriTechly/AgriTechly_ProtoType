@@ -45,41 +45,88 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
     <style>
       .news-bar {
-        overflow: hidden;
-        position: relative;
-        white-space: nowrap;
+          overflow: hidden;
+          position: relative;
+          white-space: nowrap;
+          padding: 10px 0;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background: rgb(243 244 246 / var(--tw-bg-opacity));
+          width: 1200px;
+          margin: auto;
+          margin-bottom: 10px;
+          border-radius: .5rem;
+          font-family: system-ui;
       }
-  
-      .news-bar .news-items {
-        display: inline-block;
-        padding-left: 100%;
-        animation: marquee 60s linear infinite;
-      }
-  
-      .news-bar .news-items span {
-        display: inline-block;
-        padding: 10px;
-      }
-  
-      @keyframes marquee {
-        0% { transform: translateX(-10%); }
-        100% { transform: translateX(-100%); }
-      }
-      .news-bar .news-items-rtl {
-        display: inline-block;
-        padding-left: 100%;
-        animation: marquee-rtl 60s linear infinite;
-      }
-  
+
       
-      @keyframes marquee-rtl {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(0%); }
+      a:hover {
+          color: #1fc91f;
       }
+
+
+        .news-bar .news-items {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 120s linear infinite;
+        }
+
+        .news-bar .news-items span {
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .news-bar .news-items a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .news-bar .news-items a:hover {
+            color: #1fc91f;
+        }
+
+        .news-bar .news-items-rtl span::before {
+            content: '@';
+            color: green;
+            margin-left: 20px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .news-bar .news-items-rtl {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee-rtl 120s linear infinite;
+        }
+
+        @keyframes marquee-rtl {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Responsive iframe */
+        .responsive-iframe {
+            width: 100%;
+            height: 750px;
+            border: 0;
+        }
+
+        .iframe-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .news-bar {
+                width: 100%;
+            }
+        }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <script>
-      const apiKey = 'YOUR_API_KEY';
+      const apiKey = 'YOUR_API_KEY_HERE';
 
       // Function to fetch weather data from the API
       async function fetchWeatherData(latitude, longitude) {
@@ -98,7 +145,7 @@
           const weather = data.list[i];
           const city = data.city.name + data.city.country;
           const date = new Date(weather.dt * 1000);
-          const Day = [' الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const Day = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
           const hours = date.getHours();
           const isDay = hours >= 6 && hours < 18;
           let icon = '';
@@ -375,7 +422,7 @@
     <div class="news-bar">
       <div div class="news-items-rtl" id="news-container">
         {% for article in news %}
-        <span class="text-xs mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
+        <span class="text-lg mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
         {% endfor %}
       </div>
     </div>
@@ -464,25 +511,9 @@
           </div>
           {% endif %}
         </div>
-        <br><br>
+      </div>
       <div class="news-bar">
         <div class="news-items" id="weather-container"></div>
-      </div>
-      <footer class="bg-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-          <div class="flex justify-center space-x-6 md:order-2">
-            <p class="text-green-400 ">Contact us :</p>
-            <a href="mailto:mail@agritechly.tech" class="text-gray-400 hover:text-gray-500">mail@agritechly.tech
-            </a>
-      
-          </div>
-          <div class="mt-8 md:mt-0 md:order-1">
-            <p class="text-center text-base text-gray-400">
-              &copy; 2024 Achritechly, Inc. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
       </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>

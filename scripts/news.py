@@ -2,9 +2,13 @@ from flask import Blueprint, render_template
 import requests
 from bs4 import BeautifulSoup
 
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
+}
+
 def get_news_articles():
     # Scrape the website
-    response = requests.get('https://elfilahanews.dz')
+    response = requests.get('https://elfilahanews.dz', headers=headers)
     soup = BeautifulSoup(response.content, 'html.parser')
     # Use soup to find and extract the desired data
     news_articles = []

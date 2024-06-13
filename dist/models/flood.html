@@ -44,16 +44,33 @@
     <!-- adding favicon-->
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
     <style>
-      .news-bar {
-        overflow: hidden;
-        position: relative;
-        white-space: nowrap;
+    .news-bar {
+          overflow: hidden;
+          position: relative;
+          white-space: nowrap;
+          padding: 10px 0;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background: rgb(243 244 246 / var(--tw-bg-opacity));
+          width: 1200px;
+          margin: auto;
+          margin-bottom: 10px;
+          border-radius: .5rem;
+          font-family: system-ui;
       }
+
+      span.text-xs.mx-4:before {
+          content: '@';
+          margin-left: 20px;
+          color: green;
+      }
+a:hover {
+    color: #1fc91f;
+}
   
       .news-bar .news-items {
         display: inline-block;
         padding-left: 100%;
-        animation: marquee 60s linear infinite;
+        animation: marquee 120s linear infinite;
       }
   
       .news-bar .news-items span {
@@ -62,13 +79,13 @@
       }
   
       @keyframes marquee {
-        0% { transform: translateX(-10%); }
+        0% { transform: translateX(0); }
         100% { transform: translateX(-100%); }
       }
       .news-bar .news-items-rtl {
         display: inline-block;
         padding-left: 100%;
-        animation: marquee-rtl 60s linear infinite;
+        animation: marquee-rtl 120s linear infinite;
       }
   
       
@@ -77,9 +94,8 @@
         100% { transform: translateX(0%); }
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <script>
-      const apiKey = 'YOUR_API_KEY';
+      const apiKey = 'YOUR_API_KEY_HERE';
 
       // Function to fetch weather data from the API
       async function fetchWeatherData(latitude, longitude) {
@@ -98,7 +114,7 @@
           const weather = data.list[i];
           const city = data.city.name + data.city.country;
           const date = new Date(weather.dt * 1000);
-          const Day = [' الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const Day = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
           const hours = date.getHours();
           const isDay = hours >= 6 && hours < 18;
           let icon = '';
@@ -372,130 +388,131 @@
         </div>
       </div>
     </header>
+  
     <div class="news-bar">
       <div div class="news-items-rtl" id="news-container">
         {% for article in news %}
-        <span class="text-xs mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
+        <span class="text-lg mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
         {% endfor %}
       </div>
     </div>
     <div class="relative bg-white py-16 sm:py-24">
-      <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
-        <div class="relative sm:py-16 lg:py-0">
-          <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
-            <div class="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"></div>
-            <svg class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404" height="392" fill="none" viewBox="0 0 404 392">
-              <defs>
-                <pattern id="02f20b47-fd69-4224-a62a-4c9de5c763f7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
-            </svg>
-          </div>
-          <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
-            <!-- Testimonial card-->
-            <div class="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
-              <img class="absolute inset-0 h-full w-full object-cover" src="{{ url_for('static', filename='images/flood.jpg') }}" alt="">
-              <div class="absolute inset-0  mix-blend-multiply"></div>
-              
-              <div class="relative px-8">
-                <div>
-                  <h2 class="text-xl font-semibold text-indigo-100">Flood Prediction</h2>
+        <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+          <div class="relative sm:py-16 lg:py-0">
+            <div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+              <div class="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"></div>
+              <svg class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404" height="392" fill="none" viewBox="0 0 404 392">
+                <defs>
+                  <pattern id="02f20b47-fd69-4224-a62a-4c9de5c763f7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                  </pattern>
+                </defs>
+                <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
+              </svg>
+            </div>
+            <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+              <!-- Testimonial card-->
+              <div class="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
+                <img class="absolute inset-0 h-full w-full object-cover" src="{{ url_for('static', filename='images/flood.jpg') }}" alt="">
+                <div class="absolute inset-0  mix-blend-multiply"></div>
+                
+                <div class="relative px-8">
+                  <div>
+                    <h2 class="text-xl font-semibold text-indigo-100">Flood Prediction</h2>
+                  </div>
+                  <blockquote class="mt-8">
+                    <footer class="mt-4">
+                      <form class="form-horizontal" action="/flood/submit" method="post" enctype="multipart/form-data">
+                          <div class="overflow-auto h-48 scroll-smooth scroll- " style="scrollbar-width: thin;">
+                            <div class="relative mb-4 mr-1">
+                              <label for="mi" class="leading-7 text-sm text-white">Monsoon Intensity</label>
+                              <input id="mi" name="mi" placeholder="Monsoon Intensity" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                              <label for="td" class="leading-7 text-sm text-white">Topography Drainage</label>
+                              <input id="td" name="td" placeholder="Topography Drainage" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                              <label for="rm" class="leading-7 text-sm text-white">River Management</label>
+                              <input id="rm" name="rm" placeholder="River Management" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                              <label for="d" class="leading-7 text-sm text-white">Deforestation</label>
+                              <input id="d" name="d" placeholder="Deforestation" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="u" class="leading-7 text-sm text-white">Urbanization</label>
+                                <input id="u" name="u" placeholder="Urbanization" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="cc" class="leading-7 text-sm text-white">Climate Change</label>
+                                <input id="cc" name="cc" placeholder="Climate Change" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="dq" class="leading-7 text-sm text-white">Dams Quality</label>
+                                <input id="dq" name="dq" placeholder="Dams Quality" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="s" class="leading-7 text-sm text-white">Siltation</label>
+                                <input id="s" name="s" placeholder="Siltation" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="ap" class="leading-7 text-sm text-white">Agricultural Practices</label>
+                                <input id="ap" name="ap" placeholder="Agricultural Practices" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="e" class="leading-7 text-sm text-white">Encroachments</label>
+                                <input id="e" name="e" placeholder="Encroachments" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="idp" class="leading-7 text-sm text-white">Ineffective Disaster Preparedness</label>
+                                <input id="idp" name="idp" placeholder="Ineffective Disaster Preparedness" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="ds" class="leading-7 text-sm text-white">Drainage Systems</label>
+                                <input id="ds" name="ds" placeholder="Drainage Systems" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="cv" class="leading-7 text-sm text-white">Coastal Vulnerability</label>
+                                <input id="cv" name="cv" placeholder="Coastal Vulnerability" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="ls" class="leading-7 text-sm text-white">Land slides</label>
+                                <input id="ls" name="ls" placeholder="Land slides" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="ws" class="leading-7 text-sm text-white">Water sheds</label>
+                                <input id="ws" name="ws" placeholder="Water sheds" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="di" class="leading-7 text-sm text-white">Deteriorating Infrastructure</label>
+                                <input id="di" name="di" placeholder="Deteriorating Infrastructure" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="ps" class="leading-7 text-sm text-white">Population Score</label>
+                                <input id="ps" name="ps" placeholder="Population Score" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="wl" class="leading-7 text-sm text-white">Wetland Loss</label>
+                                <input id="wl" name="wl" placeholder="Wetland Loss" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="ip" class="leading-7 text-sm text-white">Inadequate Planning</label>
+                                <input id="ip" name="ip" placeholder="Inadequate Planning" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                            <div class="relative mb-4 mr-1">
+                                <label for="pf" class="leading-7 text-sm text-white">Political Factors</label>
+                                <input id="pf" name="pf" placeholder="Political Factors" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
+                            </div>
+                        </div>
+                        <button type="submit" class="inline-flex w-full justify-center rounded-md bg-green-600 mt-2 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">submit</button>
+                      </form>
+                    </footer>
+                  </blockquote>
                 </div>
-                <blockquote class="mt-8">
-                  <footer class="mt-4">
-                    <form class="form-horizontal" action="/flood/submit" method="post" enctype="multipart/form-data">
-                        <div class="overflow-auto h-48 scroll-smooth scroll- " style="scrollbar-width: thin;">
-                          <div class="relative mb-4 mr-1">
-                            <label for="mi" class="leading-7 text-sm text-white">Monsoon Intensity</label>
-                            <input id="mi" name="mi" placeholder="Monsoon Intensity" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                            <label for="td" class="leading-7 text-sm text-white">Topography Drainage</label>
-                            <input id="td" name="td" placeholder="Topography Drainage" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                            <label for="rm" class="leading-7 text-sm text-white">River Management</label>
-                            <input id="rm" name="rm" placeholder="River Management" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                            <label for="d" class="leading-7 text-sm text-white">Deforestation</label>
-                            <input id="d" name="d" placeholder="Deforestation" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="u" class="leading-7 text-sm text-white">Urbanization</label>
-                              <input id="u" name="u" placeholder="Urbanization" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="cc" class="leading-7 text-sm text-white">Climate Change</label>
-                              <input id="cc" name="cc" placeholder="Climate Change" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="dq" class="leading-7 text-sm text-white">Dams Quality</label>
-                              <input id="dq" name="dq" placeholder="Dams Quality" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="s" class="leading-7 text-sm text-white">Siltation</label>
-                              <input id="s" name="s" placeholder="Siltation" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="ap" class="leading-7 text-sm text-white">Agricultural Practices</label>
-                              <input id="ap" name="ap" placeholder="Agricultural Practices" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="e" class="leading-7 text-sm text-white">Encroachments</label>
-                              <input id="e" name="e" placeholder="Encroachments" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="idp" class="leading-7 text-sm text-white">Ineffective Disaster Preparedness</label>
-                              <input id="idp" name="idp" placeholder="Ineffective Disaster Preparedness" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="ds" class="leading-7 text-sm text-white">Drainage Systems</label>
-                              <input id="ds" name="ds" placeholder="Drainage Systems" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="cv" class="leading-7 text-sm text-white">Coastal Vulnerability</label>
-                              <input id="cv" name="cv" placeholder="Coastal Vulnerability" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="ls" class="leading-7 text-sm text-white">Land slides</label>
-                              <input id="ls" name="ls" placeholder="Land slides" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="ws" class="leading-7 text-sm text-white">Water sheds</label>
-                              <input id="ws" name="ws" placeholder="Water sheds" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="di" class="leading-7 text-sm text-white">Deteriorating Infrastructure</label>
-                              <input id="di" name="di" placeholder="Deteriorating Infrastructure" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="ps" class="leading-7 text-sm text-white">Population Score</label>
-                              <input id="ps" name="ps" placeholder="Population Score" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="wl" class="leading-7 text-sm text-white">Wetland Loss</label>
-                              <input id="wl" name="wl" placeholder="Wetland Loss" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="ip" class="leading-7 text-sm text-white">Inadequate Planning</label>
-                              <input id="ip" name="ip" placeholder="Inadequate Planning" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                          <div class="relative mb-4 mr-1">
-                              <label for="pf" class="leading-7 text-sm text-white">Political Factors</label>
-                              <input id="pf" name="pf" placeholder="Political Factors" type="number" max="20" min="0" class="w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 h-14 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></input>
-                          </div>
-                      </div>
-                      <button type="submit" class="inline-flex w-full justify-center rounded-md bg-green-600 mt-2 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">submit</button>
-                    </form>
-                  </footer>
-                </blockquote>
               </div>
             </div>
           </div>
-        </div>
           {% if prediction %}
           <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
             <!-- Content area -->
@@ -516,28 +533,12 @@
           </div>
           {% endif %}
         </div>
-        <br><br>
+      </div>
       <div class="news-bar">
         <div class="news-items" id="weather-container"></div>
       </div>
-      <footer class="bg-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-          <div class="flex justify-center space-x-6 md:order-2">
-            <p class="text-green-400 ">Contact us :</p>
-            <a href="mailto:mail@agritechly.tech" class="text-gray-400 hover:text-gray-500">mail@agritechly.tech
-            </a>
-      
-          </div>
-          <div class="mt-8 md:mt-0 md:order-1">
-            <p class="text-center text-base text-gray-400">
-              &copy; 2024 Achritechly, Inc. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
-      </div>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var lazyImages = document.querySelectorAll("img.lazyload");

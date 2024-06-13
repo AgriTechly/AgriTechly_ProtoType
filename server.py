@@ -7,7 +7,7 @@ from flask import Flask, render_template, redirect
 import os
 import sys
 import locale
-#import tensorflow as tf
+import tensorflow as tf
 
 # import DL classifiers
 from scripts.plant import plant_disease
@@ -15,13 +15,12 @@ from scripts.weed import weed_detect
 from scripts.flood import flood_pred
 from scripts.lemon import lemon_detect
 from scripts.irrigation import irrigation
-from scripts.cropP import cropP
 from scripts.cropR import cropR
-from scripts.pest import pest
-from scripts.chicken import chicken
-from scripts.bees import bee
-from scripts.water import water
-from scripts.cow import cow
+"""
+from scripts.cropP import cropP
+#from scripts.pest import pest
+#from scripts.chicken import chicken
+"""
 
 # add news script
 import scripts.news
@@ -46,15 +45,13 @@ app.register_blueprint(weed_detect)
 app.register_blueprint(flood_pred)
 app.register_blueprint(lemon_detect)
 app.register_blueprint(irrigation)
-app.register_blueprint(cropP)
 app.register_blueprint(cropR)
-app.register_blueprint(bee)
 app.register_blueprint(articles)
-app.register_blueprint(pest)
-app.register_blueprint(chicken)
-app.register_blueprint(water)
-app.register_blueprint(cow)
-
+"""
+app.register_blueprint(cropP)
+#app.register_blueprint(pest)
+#app.register_blueprint(chicken)
+"""
 
 # setup wsgi object
 wsgi_app = app.wsgi_app
@@ -81,12 +78,12 @@ def blog2():
 @app.route('/chat')
 def chat():
     # print current directory
-    return redirect("http://chat.agritechly.tech")
+    return render_template('chat.html',news=news_data)
 # redirect models/chat to chat
 @app.route('/models/chat')
 def chat2():
     # print current directory
-    return redirect("http://chat.agritechly.tech")
+    return redirect("/chat")
 @app.route('/models')
 def models():
     # print current directory
@@ -111,6 +108,7 @@ def lemonChecker():
 def irrigation():
     # print current directory
     return render_template('models/irrigation.html')
+"""
 @app.route('/models/pestDetect')
 def pestDetection():
     # print current directory
@@ -123,6 +121,7 @@ def chickenFecal():
 def cropPred():
     # print current directory
     return render_template('models/cropP.html')
+"""
 @app.route('/models/cropR')
 def cropRec():
     # print current directory
@@ -131,19 +130,6 @@ def cropRec():
 def floodPred():
     # print current directory
     return render_template('models/flood.html')
-@app.route('/models/Bee')
-def bee():
-    # print current directory
-    return render_template('models/bee.html')
-@app.route('/models/water')
-def water():
-    # print current directory
-    return render_template('models/water.html')
-@app.route('/models/cow')
-def cow():
-    # print current directory
-    return render_template('models/cow.html')
-
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5500)
+    app.run(debug=True,port=5500,host='0.0.0.0')

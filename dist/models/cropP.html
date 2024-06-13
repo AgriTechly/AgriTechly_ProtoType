@@ -44,16 +44,33 @@
     <!-- adding favicon-->
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
     <style>
-      .news-bar {
-        overflow: hidden;
-        position: relative;
-        white-space: nowrap;
+    .news-bar {
+          overflow: hidden;
+          position: relative;
+          white-space: nowrap;
+          padding: 10px 0;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background: rgb(243 244 246 / var(--tw-bg-opacity));
+          width: 1200px;
+          margin: auto;
+          margin-bottom: 10px;
+          border-radius: .5rem;
+          font-family: system-ui;
       }
+
+      span.text-xs.mx-4:before {
+          content: '@';
+          margin-left: 20px;
+          color: green;
+      }
+a:hover {
+    color: #1fc91f;
+}
   
       .news-bar .news-items {
         display: inline-block;
         padding-left: 100%;
-        animation: marquee 60s linear infinite;
+        animation: marquee 120s linear infinite;
       }
   
       .news-bar .news-items span {
@@ -62,13 +79,13 @@
       }
   
       @keyframes marquee {
-        0% { transform: translateX(-10%); }
+        0% { transform: translateX(0); }
         100% { transform: translateX(-100%); }
       }
       .news-bar .news-items-rtl {
         display: inline-block;
         padding-left: 100%;
-        animation: marquee-rtl 60s linear infinite;
+        animation: marquee-rtl 120s linear infinite;
       }
   
       
@@ -77,9 +94,8 @@
         100% { transform: translateX(0%); }
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <script>
-      const apiKey = 'YOUR_API_KEY';
+      const apiKey = 'YOUR_API_KEY_HERE';
 
       // Function to fetch weather data from the API
       async function fetchWeatherData(latitude, longitude) {
@@ -98,7 +114,7 @@
           const weather = data.list[i];
           const city = data.city.name + data.city.country;
           const date = new Date(weather.dt * 1000);
-          const Day = [' الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const Day = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
           const hours = date.getHours();
           const isDay = hours >= 6 && hours < 18;
           let icon = '';
@@ -276,8 +292,8 @@
               Home
             </a>
   
-            <a href="blog" class="text-base font-medium text-gray-500 hover:text-gray-900">
-                Blog
+            <a href="news" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                News
             </a>
 
             <a href="models" class="text-base font-medium text-gray-500 hover:text-gray-900">
@@ -331,15 +347,15 @@
                     </div>
                   </a>
   
-                  <a href="blog" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                  <a href="news" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
                       <!-- Heroicon name: outline/question-mark-circle -->
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M76 2H16c-2.2 0-4 1.8-4 4v80c0 2.2 1.8 4 4 4h60c2.2 0 4-1.8 4-4V6c0-2.2-1.8-4-4-4zm-4 80H20V10h52v72zM28.5 65c0-2.2 1.8-4 4-4h27c2.2 0 4 1.8 4 4s-1.8 4-4 4h-27c-2.2 0-4-1.8-4-4zm.6-19c0-2.2 1.8-4 4-4h26.3c2.2 0 4 1.8 4 4s-1.8 4-4 4H33.1c-2.2 0-4-1.8-4-4zm0-19c0-2.2 1.8-4 4-4h26.3c2.2 0 4 1.8 4 4s-1.8 4-4 4H33.1c-2.2 0-4-1.8-4-4z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M 4 3 C 2.895 3 2 3.895 2 5 L 2 18 C 2 19.657 3.343 21 5 21 L 19 21 C 20.64497 21 22 19.64497 22 18 L 22 8 A 1.0001 1.0001 0 0 0 20.984375 6.9863281 A 1.0001 1.0001 0 0 0 20 8 L 20 18 C 20 18.56503 19.56503 19 19 19 C 18.448 19 18 18.551 18 18 L 18 5 C 18 3.895 17.105 3 16 3 L 4 3 z M 7 6 L 13 6 C 13.552 6 14 6.448 14 7 L 14 8 C 14 8.552 13.552 9 13 9 L 7 9 C 6.448 9 6 8.552 6 8 L 6 7 C 6 6.448 6.448 6 7 6 z M 7 12 L 13 12 C 13.552 12 14 12.448 14 13 C 14 13.552 13.552 14 13 14 L 7 14 C 6.448 14 6 13.552 6 13 C 6 12.448 6.448 12 7 12 z M 7 16 L 13 16 C 13.552 16 14 16.448 14 17 C 14 17.552 13.552 18 13 18 L 7 18 C 6.448 18 6 17.552 6 17 C 6 16.448 6.448 16 7 16 z" />
                       </svg>
                     </div>
                     <div class="ml-4 text-base font-medium text-gray-900">
-                      Blog
+                      News
                     </div>
                   </a>
 
@@ -372,13 +388,6 @@
         </div>
       </div>
     </header>
-    <div class="news-bar">
-      <div div class="news-items-rtl" id="news-container">
-        {% for article in news %}
-        <span class="text-xs mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
-        {% endfor %}
-      </div>
-    </div>
     <div class="relative bg-white py-16 sm:py-24">
         <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
           <div class="relative sm:py-16 lg:py-0">
@@ -463,25 +472,6 @@
           </div>
           {% endif %}
         </div>
-        <br><br>
-      <div class="news-bar">
-        <div class="news-items" id="weather-container"></div>
-      </div>
-      <footer class="bg-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-          <div class="flex justify-center space-x-6 md:order-2">
-            <p class="text-green-400 ">Contact us :</p>
-            <a href="mailto:mail@agritechly.tech" class="text-gray-400 hover:text-gray-500">mail@agritechly.tech
-            </a>
-      
-          </div>
-          <div class="mt-8 md:mt-0 md:order-1">
-            <p class="text-center text-base text-gray-400">
-              &copy; 2024 Achritechly, Inc. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
       </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>

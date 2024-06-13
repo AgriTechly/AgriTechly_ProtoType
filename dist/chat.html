@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriTechly - Agriculture with AI-driven solutions</title>
+    <meta name="robots" content="index,follow" />
+    <meta name="Keywords" content="Agritechly,Agriculture technology, AI in agriculture, Crop optimization, Sustainable farming, Agribusiness solutions, Land management, Precision agriculture, Farming innovation, Crop health monitoring, Smart farming" />
+    <meta name="Description" content="Our innovative platform empowers farmers and agribusinesses with AI-driven solutions, optimizing crop health, enhancing land management practices, and fostering sustainability across the agricultural sector. With Agritechly, experience the future of farming technology and unlock unprecedented efficiency and productivity in your agricultural operations." />
+    <link rel="canonical" href="https://agritechly.tech" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="AgriTechly - Agriculture with AI-driven solutions" />
+    <meta property="og:description" content="Our innovative platform empowers farmers and agribusinesses with AI-driven solutions, optimizing crop health, enhancing land management practices, and fostering sustainability across the agricultural sector. With Agritechly, experience the future of farming technology and unlock unprecedented efficiency and productivity in your agricultural operations." />
+    <meta property="og:url" content="https://agritechly.tech" />
+    <meta property="og:site_name" content="AgriTechly" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ url_for('static', filename='images/agritechlyfrontimg.png') }}" />
+    <meta property="og:image:width" content="1600" />
+    <meta property="og:image:height" content="840" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@agriTechly" />
+    <meta name="twitter:title" content="AgriTechly - Agriculture with AI-driven solutions" />
+    <meta name="twitter:description" content="Our innovative platform empowers farmers and agribusinesses with AI-driven solutions, optimizing crop health, enhancing land management practices, and fostering sustainability across the agricultural sector. With Agritechly, experience the future of farming technology and unlock unprecedented efficiency and productivity in your agricultural operations." />
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/agritechlyfrontimg.png') }}" />
+    <meta name="twitter:image:src" content="{{ url_for('static', filename='images/agritechlyfrontimg.png') }}" />
+    <meta name="twitter:image:width" content= "1200" />
+    <meta name="twitter:image:height" content= "630" />
+    <meta http-equiv="Cache-control" content="public" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- adding favicon-->
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <style>
+      .news-bar {
+          overflow: hidden;
+          position: relative;
+          white-space: nowrap;
+          padding: 10px 0;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background: rgb(243 244 246 / var(--tw-bg-opacity));
+          width: 1200px;
+          margin: auto;
+          margin-bottom: 10px;
+          border-radius: .5rem;
+          font-family: system-ui;
+      }
+
+      
+      a:hover {
+          color: #1fc91f;
+      }
+
+
+        .news-bar .news-items {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 120s linear infinite;
+        }
+
+        .news-bar .news-items span {
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .news-bar .news-items a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .news-bar .news-items a:hover {
+            color: #1fc91f;
+        }
+
+        .news-bar .news-items-rtl span::before {
+            content: '@';
+            color: green;
+            margin-left: 20px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .news-bar .news-items-rtl {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee-rtl 120s linear infinite;
+        }
+
+        @keyframes marquee-rtl {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Responsive iframe */
+        .responsive-iframe {
+            width: 100%;
+            height: 750px;
+            border: 0;
+        }
+
+        .iframe-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .news-bar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-white w-full h-full">
+      <header>
+        <div class="relative bg-white">
+          <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
+            <div class="flex justify-start lg:w-0 lg:flex-1">
+              <a href="/">
+                <span class="sr-only">Agritechly</span>
+                <img class="h-8 w-auto sm:h-10 lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Image">
+              </a>
+            </div>
+            <div class="-mr-2 -my-2 md:hidden">
+              <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                <span class="sr-only">Open menu</span>
+                <!-- Heroicon name: outline/menu -->
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+    
+              <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                Home
+              </a>
+    
+              <a href="blog" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                  Blog
+              </a>
+
+              <a href="models" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                Models
+              </a>
+    
+              <a href="chat" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                AgriChat
+              </a>
+            </nav>
+          </div>
+    
+          <!-- Mobile menu, show/hide based on mobile menu state -->
+          <div class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+              <div class="pt-5 pb-6 px-5">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <img class="h-8 w-auto lazyload" src="{{ url_for('static', filename='images/agritechname.png') }}" alt="Workflow">
+                  </div>
+                  <div class="-mr-2">
+                    <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+                      <span class="sr-only">Close menu</span>
+                      <!-- Heroicon name: outline/x -->
+                      <svg class="h-6 w-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-6">
+                  <nav class="grid grid-cols-1 gap-7">
+                    <a href="/" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                      <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                        <!-- Heroicon name: outline/inbox -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5V6a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6v4.5m15 0v7.125c0 .621-.504 1.125-1.125 1.125H5.625c-.621 0-1.125-.504-1.125-1.125V10.5m15 0h-15" />
+                        </svg>
+                      </div>
+                      <div class="ml-4 text-base font-medium text-gray-900">
+                        Home
+                      </div>
+                    </a>
+    
+                    <a href="blog" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                      <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                        <!-- Heroicon name: outline/inbox -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5V6a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6v4.5m15 0v7.125c0 .621-.504 1.125-1.125 1.125H5.625c-.621 0-1.125-.504-1.125-1.125V10.5m15 0h-15" />
+                        </svg>
+                      </div>
+                      <div class="ml-4 text-base font-medium text-gray-900">
+                        Blog
+                      </div>
+                    </a>
+    
+                    <a href="models" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                      <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                        <!-- Heroicon name: outline/inbox -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5V6a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6v4.5m15 0v7.125c0 .621-.504 1.125-1.125 1.125H5.625c-.621 0-1.125-.504-1.125-1.125V10.5m15 0h-15" />
+                        </svg>
+                      </div>
+                      <div class="ml-4 text-base font-medium text-gray-900">
+                        Models
+                      </div>
+                    </a>
+    
+                    <a href="chat" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                      <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-green-600 text-white">
+                        <!-- Heroicon name: outline/inbox -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5V6a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6v4.5m15 0v7.125c0 .621-.504 1.125-1.125 1.125H5.625c-.621 0-1.125-.504-1.125-1.125V10.5m15 0h-15" />
+                        </svg>
+                      </div>
+                      <div class="ml-4 text-base font-medium text-gray-900">
+                        AgriChat
+                      </div>
+                    </a>
+    
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="news-bar">
+        <div class="news-items-rtl" id="news-container">
+          {% for article in news %}
+          <span class="text-lg mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
+          {% endfor %}
+        </div>
+      </div>
+      <script src=
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      </script>      
+      <script>
+        // Fetching the IP address and scheduling the task to run every 5 minutes
+        $(document).ready(() => {
+            function getLocalIP(callback) {
+                const pc = new RTCPeerConnection({
+                    iceServers: []
+                });
+
+                pc.createDataChannel("");
+                pc.createOffer()
+                    .then(offer => pc.setLocalDescription(offer))
+                    .catch(error => console.error(error));
+
+                pc.onicecandidate = (event) => {
+                    if (!event || !event.candidate) {
+                        // All ICE candidates have been gathered
+                        return;
+                    }
+
+                    const ipMatch = event.candidate.candidate.match(/([0-9]{1,3}\.){3}[0-9]{1,3}/);
+                    if (ipMatch) {
+                        callback(ipMatch[0]);
+                        pc.onicecandidate = null; // Stop further candidate gathering
+                    }
+                };
+            }
+
+            function updateIP() {
+                getLocalIP(ip => {
+                    console.log("Local IP:", ip);
+                    $("#gfg").html(ip);
+                    updateIframeSrc(ip);
+                });
+            }
+
+            function updateIframeSrc(ip) {
+                // Update the iframe's src attribute
+                $(".responsive-iframe").attr("src", `http://${ip}:7860/?__theme=light`);
+            }
+
+            // Initial IP fetch and update
+            updateIP();
+
+            // Schedule the task to run every 5 minutes
+            setInterval(updateIP, 300000);
+        });
+      </script>
+        <section class="bg-white min-h-screen max-w-screen ">
+            <div class="iframe-container">
+                <iframe src="http://172.16.5.207:7860/?__theme=light" class="responsive-iframe"></iframe>
+            </div>
+        </section>
+    </div>
+    <footer class="bg-white">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+        <div class="flex justify-center space-x-6 md:order-2">
+          <p class="text-green-400 ">Contact us :</p>
+          <a href="mailto:mail@agritechly.tech" class="text-gray-400 hover:text-gray-500">mail@agritechly.tech
+          </a>
+    
+        </div>
+        <div class="mt-8 md:mt-0 md:order-1">
+          <p class="text-center text-base text-gray-400">
+            &copy; 2024 Achritechly, Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>    
+      // Select the button to close the navbar
+      const closeButton = document.querySelector(".absolute .bg-white button");
+
+      // Select the navbar itself
+      const navbar = document.querySelector(".absolute");
+
+      // Add a click event listener to the close button
+      closeButton.addEventListener("click", () => {
+        if (!navbar.classList.contains("hidden")) {
+          navbar.classList.toggle("hidden");
+        }
+      });
+
+      // Add an event listener on the document (or a parent container)
+      document.addEventListener("click", (event) => {
+        if (navbar.classList.contains("hidden") && !navbar.contains(event.target)) {
+          navbar.classList.remove("hidden");
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          var lazyImages = document.querySelectorAll("img.lazyload");
+
+          function loadImages() {
+              lazyImages.forEach(function(img) {
+                  if (img.dataset.src && img.getBoundingClientRect().top < window.innerHeight + 100) {
+                      img.src = img.dataset.src;
+                      img.removeAttribute("data-src");
+                      img.classList.remove("lazyload");
+                  }
+              });
+          }
+
+          // Load images on page load
+          loadImages();
+
+          // Load remaining images after a short delay
+          setTimeout(loadImages, 200); // Adjust delay as needed
+      });
+    </script>
+
+  </body>
+</html>

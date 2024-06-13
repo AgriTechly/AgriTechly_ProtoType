@@ -45,41 +45,89 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
     <style>
       .news-bar {
-        overflow: hidden;
-        position: relative;
-        white-space: nowrap;
+          overflow: hidden;
+          position: relative;
+          white-space: nowrap;
+          padding: 10px 0;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background: rgb(243 244 246 / var(--tw-bg-opacity));
+          width: 1200px;
+          margin: auto;
+          margin-bottom: 10px;
+          border-radius: .5rem;
+          font-family: system-ui;
       }
-  
-      .news-bar .news-items {
-        display: inline-block;
-        padding-left: 100%;
-        animation: marquee 60s linear infinite;
-      }
-  
-      .news-bar .news-items span {
-        display: inline-block;
-        padding: 10px;
-      }
-  
-      @keyframes marquee {
-        0% { transform: translateX(-10%); }
-        100% { transform: translateX(-100%); }
-      }
-      .news-bar .news-items-rtl {
-        display: inline-block;
-        padding-left: 100%;
-        animation: marquee-rtl 60s linear infinite;
-      }
-  
+
       
-      @keyframes marquee-rtl {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(0%); }
+      a:hover {
+          color: #1fc91f;
       }
+
+
+        .news-bar .news-items {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 120s linear infinite;
+        }
+
+        .news-bar .news-items span {
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .news-bar .news-items a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .news-bar .news-items a:hover {
+            color: #1fc91f;
+        }
+
+        .news-bar .news-items-rtl span::before {
+            content: '@';
+            color: green;
+            margin-left: 20px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .news-bar .news-items-rtl {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee-rtl 120s linear infinite;
+        }
+
+        @keyframes marquee-rtl {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Responsive iframe */
+        .responsive-iframe {
+            width: 100%;
+            height: 750px;
+            border: 0;
+        }
+
+        .iframe-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .news-bar {
+                width: 100%;
+            }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <script>
-      const apiKey = 'YOUR_API_KEY';
+      const apiKey = 'YOUR_API_KEY_HERE';
 
       // Function to fetch weather data from the API
       async function fetchWeatherData(latitude, longitude) {
@@ -98,7 +146,7 @@
           const weather = data.list[i];
           const city = data.city.name + data.city.country;
           const date = new Date(weather.dt * 1000);
-          const Day = [' الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
+          const Day = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][date.getDay()];
           const hours = date.getHours();
           const isDay = hours >= 6 && hours < 18;
           let icon = '';
@@ -373,9 +421,9 @@
       </div>
     </header>
     <div class="news-bar">
-      <div class="news-items-rtl" id="news-container">
+      <div div class="news-items-rtl" id="news-container">
         {% for article in news %}
-        <span class="text-xs mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
+        <span class="text-lg mx-4"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></span>
         {% endfor %}
       </div>
     </div>
@@ -385,7 +433,7 @@
               <div class="p-6" id="honeyBee">          
                   <h2 class="text-xl leading-6 font-medium text-gray-900">Honey Bee</h2>
                   <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/Bee.jpg') }}" alt="Image">
-                  <a href="/models/Bee" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-honeyBee')">Explore Model</a>
+                  <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-honeyBee')">Explore Model</a>
                 </div>
             <div class="pt-6 pb-8 px-6">
               <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Features</h3>
@@ -395,7 +443,7 @@
                   <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
-                  <span class="text-sm text-gray-500">Predict the Type of bee base on sounds</span>
+                  <span class="text-sm text-gray-500">Predict health of a Bee from image</span>
                 </li>
   
                 <li class="flex space-x-3">
@@ -410,7 +458,7 @@
           </div>
           <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
               <div class="p-6" id="plant">
-                <h2 class="text-lg leading-6 font-medium text-gray-900">Plant Disease Detector</h2>
+                <h2 class="text-lg leading-6 font-medium text-gray-900">Plant</h2>
                 <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/plant.jpg') }}" alt="Image">
                 <a href="/models/plantDisease" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-plant')">Explore Model</a>
               </div>
@@ -492,7 +540,7 @@
             <div class="p-6" id="pest">          
               <h2 class="text-xl leading-6 font-medium text-gray-900">Pest Detector</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/pest.jpg') }}" alt="Image">
-              <a href="/models/pestDetect" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
+              <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
             </div>
             <div class="pt-6 pb-8 px-6">
               <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Pest Detector</h3>
@@ -519,7 +567,7 @@
             <div class="p-6" id="chicken">          
               <h2 class="text-xl leading-6 font-medium text-gray-900">Chicken Health Checker</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/chicken.jpg') }}" alt="Image">
-              <a href="/models/chickenFecal" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
+              <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
             </div>
             <div class="pt-6 pb-8 px-6">
               <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Chicken Health Checker</h3>
@@ -546,7 +594,7 @@
             <div class="p-6" id="cow">          
               <h2 class="text-xl leading-6 font-medium text-gray-900">Lumpy Cow Detector</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/cow.jpg') }}" alt="Image">
-              <a href="/models/lumpyCow" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
+              <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
             </div>
             <div class="pt-6 pb-8 px-6">
               <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Lumpy Cow Detector</h3>
@@ -600,7 +648,7 @@
             <div class="p-6" id="cropP">          
               <h2 class="text-xl leading-6 font-medium text-gray-900">Crop Yield Prediction</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/cropP.jpg') }}" alt="Image">
-              <a href="/models/cropP" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
+              <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
             </div>
             <div class="pt-6 pb-8 px-6">
               <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Crop Yield Prediction</h3>
@@ -624,7 +672,7 @@
             </div>
           </div>
           <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
+            <div class="p-6" id="flood">          
               <h2 class="text-xl leading-6 font-medium text-gray-900">Flood Prediction</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/flood.jpg') }}" alt="Image">
               <a href="/models/flood" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
@@ -651,7 +699,7 @@
             </div>
           </div>
           <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
+            <div class="p-6" id="irrigation">          
               <h2 class="text-xl leading-6 font-medium text-gray-900">Irrigation Optimization</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/irrigation.jpg') }}" alt="Image">
               <a href="/models/irrigation" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
@@ -678,10 +726,10 @@
             </div>
           </div>
           <div class="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-            <div class="p-6" id="cropP">          
-              <h2 class="text-xl leading-6 font-medium text-gray-900">Wate Quality Checker</h2>
+            <div class="p-6" id="water">          
+              <h2 class="text-xl leading-6 font-medium text-gray-900">Water Quality Checker</h2>
               <img class="rounded-2xl mt-2 w-full h-48 object-cover lazyload" src="{{ url_for('static', filename='images/water.jpg') }}" alt="Image">
-              <a href="/models/water" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
+              <a href="#" class="mt-8 block w-full border border-transparent rounded-md py-2 text-sm font-semibold text-center text-white bg-green-700 hover:bg-opacity-70 sm:px-8" onclick="activateImageInput('imageInput-Weed')">Explore Model</a>
             </div>
             <div class="pt-6 pb-8 px-6">
               <h3 class="text-xs font-medium text-gray-900 tracking-wide uppercase">Wate Quality Checker</h3>
